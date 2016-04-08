@@ -12,20 +12,17 @@
         var ws = new WebSocket("ws://10.120.220.33:7681","dumb-increment-protocol");
   	console.log("ws="+ws);
     ws.onopen = function(evt) {
-        //console.log("Connection "+1+" waiting ...");
-       //   alert(ws);
+        console.log("Connection waiting ...");     
         
     };
     ws.onclose = function(evt) {
-       // console.log("Connection "+1+" closed.");
+       console.log("Connection  closed.");
     };
     ws.onerror = function (evt) {
-        //console.log("Connection error.");
+        console.log("Connection error.");
     };
-    ws.onmessage = function(evt) {
-    	/*
-        if (evt.data == "pairingcompleted") {
-            console.log("connection "+1+" paired");
+    ws.onmessage = function(evt) {    	   
+            console.log("connection  paired");
             ws.onmessage = function(evt) {
                 if(typeof evt.data == "string"){
                     alert( "Received Message: " + evt.data);
@@ -35,12 +32,7 @@
                     console.log("Received Binary Message of " + data.length + " bytes: " + data.join());
                 }
             };
-            ws.send("Hello from HbbTV App: 1");
-           
-        } else {
-            console.log("Unexpected message received from terminal.");
-            ws.close();
-        }*/
+            ws.send("Hello from HbbTV App: 1");        
     };     
        
     </script>
