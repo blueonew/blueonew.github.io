@@ -10,7 +10,7 @@
 
     <script type="text/javascript">
         var ws = new WebSocket("ws://10.120.220.33:7681","dumb-increment-protocol");
-    alert(typeof(ws));
+    alert(ws);
     ws.onopen = function(evt) {
         console.log("Connection "+1+" waiting ...");
         
