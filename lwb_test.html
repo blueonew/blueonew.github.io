@@ -10,23 +10,25 @@
 
     <script type="text/javascript">
         var ws = new WebSocket("ws://10.120.220.33:7681","dumb-increment-protocol");
-    alert(ws);
+  	console.log("ws="+ws);
     ws.onopen = function(evt) {
-        console.log("Connection "+1+" waiting ...");
+        //console.log("Connection "+1+" waiting ...");
+       //   alert(ws);
         
     };
     ws.onclose = function(evt) {
-        console.log("Connection "+1+" closed.");
+       // console.log("Connection "+1+" closed.");
     };
     ws.onerror = function (evt) {
-        console.log("Connection error.");
+        //console.log("Connection error.");
     };
     ws.onmessage = function(evt) {
+    	/*
         if (evt.data == "pairingcompleted") {
             console.log("connection "+1+" paired");
             ws.onmessage = function(evt) {
                 if(typeof evt.data == "string"){
-                    console.log( "Received Message: " + evt.data);
+                    alert( "Received Message: " + evt.data);
                 }
                 else {
                     var data = new Int8Array(evt.data);
@@ -38,7 +40,7 @@
         } else {
             console.log("Unexpected message received from terminal.");
             ws.close();
-        }
+        }*/
     };     
        
     </script>
