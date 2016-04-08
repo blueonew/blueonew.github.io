@@ -1,0 +1,45 @@
+﻿<html style="height: 100%; padding: 0; margin: 0;">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Terminal App</title>
+</head>
+<body style="height: 96%" bgcolor="#6495ed">    
+    <div style="float:left;width:48%;height:90%" >
+        <textarea id="log" style="width:98%;height:98%" disabled="true"></textarea>
+    </div>
+
+    <script type="text/javascript">
+        
+    var ws = new WebSocket("ws://10.120.220.33:7681","dumb-increment-protocol");
+    ws.onopen = function(evt) {
+        console.log("Connection "+1+" waiting ...");
+    };
+    ws.onclose = function(evt) {
+        console.log("Connection "+1+" closed.");
+    };
+    ws.onerror = function (evt) {
+        console.log("Connection error.");
+    };
+    ws.onmessage = function(evt) {
+        if (evt.data == "pairingcompleted") {
+            console.log("connection "+1+" paired");
+            ws.onmessage = function(evt) {
+                if(typeof evt.data == "string"){
+                    console.log( "Received Message: " + evt.data);
+                }
+                else {
+                    var data = new Int8Array(evt.data);
+                    console.log("Received Binary Message of " + data.length + " bytes: " + data.join());
+                }
+            };
+            ws.send("Hello from HbbTV App: 1");
+           
+        } else {
+            console.log("Unexpected message received from terminal.");
+            ws.close();
+        }
+    };     
+       
+    </script>
+</body>
+</html>
