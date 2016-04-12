@@ -9,7 +9,7 @@
     </div>
 
     <script type="text/javascript">
-        var ws = new WebSocket("ws://10.120.220.57:7681","dumb-increment-protocol");
+        var ws = new WebSocket("wss://10.120.220.75:7681","dumb-increment-protocol");
   	console.log("ws="+ws);
     ws.onopen = function(evt) {
         console.log("Connection waiting ...");     
@@ -22,8 +22,8 @@
         console.log("Connection error.");
     };
     ws.onmessage = function(evt) {    	   
-            console.log("connection  1 paired evt.data=" + evt.data);
-           /* ws.onmessage = function(evt) {
+            console.log("connection  paired evt.data=" + evt.data);
+            ws.onmessage = function(evt) {
                 if(typeof evt.data == "string"){
                     console.log( "Received Message: " + evt.data);
                 }
@@ -31,7 +31,7 @@
                     var data = new Int8Array(evt.data);
                     console.log("Received Binary Message of " + data.length + " bytes: " + data.join());
                 }
-            };*/
+            };
            // ws.send("Hello from HbbTV App: 1");        
     };     
        
