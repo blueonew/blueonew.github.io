@@ -23,7 +23,7 @@
     };
     ws.onmessage = function(evt) {    	   
             console.log("connection  paired evt.data=" + evt.data);
-            ws.onmessage = function(evt) {
+           /* ws.onmessage = function(evt) {
                 if(typeof evt.data == "string"){
                     console.log( "Received Message: " + evt.data);
                 }
@@ -31,7 +31,7 @@
                     var data = new Int8Array(evt.data);
                     console.log("Received Binary Message of " + data.length + " bytes: " + data.join());
                 }
-            };
+            };*/
            // ws.send("Hello from HbbTV App: 1");        
     };     
        
