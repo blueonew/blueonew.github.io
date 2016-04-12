@@ -9,7 +9,8 @@
     </div>
 
     <script type="text/javascript">
-        var ws = new WebSocket("ws://10.120.220.57:7681", "lws-mirror-protocol");
+    function start(){
+    	var ws = new WebSocket("ws://10.120.220.57:7681", "lws-mirror-protocol");
   	console.log("ws="+ws);
     ws.onopen = function(evt) {
         console.log("Connection waiting ...");     
@@ -35,6 +36,10 @@
             };
             ws.send("Hello from HbbTV App: 1");        
     };     
+    		
+    	}
+    	
+    	setTimeout("start()", 10000);
        
     </script>
 </body>
