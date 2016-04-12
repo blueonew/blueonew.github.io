@@ -10,7 +10,7 @@
 
     <script type="text/javascript">
     function start(){
-    	var ws = new WebSocket("ws://10.120.220.57:7681", "lws-mirror-protocol");
+    	var ws = new WebSocket("wss://10.120.220.57:7681", "lws-mirror-protocol");
   	console.log("ws="+ws);
     ws.onopen = function(evt) {
         console.log("Connection waiting ...");     
