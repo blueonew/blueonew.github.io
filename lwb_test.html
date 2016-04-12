@@ -9,7 +9,7 @@
     </div>
 
     <script type="text/javascript">
-        var ws = new WebSocket("ws://10.120.220.57:7681","dumb-increment-protocol");
+        var ws = new WebSocket("ws://10.120.220.57:7681","lws-mirror-protocol");
   	console.log("ws="+ws);
     ws.onopen = function(evt) {
         console.log("Connection waiting ...");     
@@ -32,7 +32,7 @@
                     console.log("Received Binary Message of " + data.length + " bytes: " + data.join());
                 }
             };
-           // ws.send("Hello from HbbTV App: 1");        
+            ws.send("Hello from HbbTV App: 1");        
     };     
        
     </script>
