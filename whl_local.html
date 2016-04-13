@@ -17,6 +17,7 @@
         console.log("Connection waiting ...");     
         ws.send("onOpen");
     };
+    
     ws.onclose = function(evt) {
        console.log("Connection  closed.");
     };
