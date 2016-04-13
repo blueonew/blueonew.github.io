@@ -12,7 +12,7 @@
     function start(){
 		var appEndpoint = "org.mychannel.myapp";
     var ws = new WebSocket("ws://10.120.220.83:7681/remote/" + appEndpoint, "lws-mirror-protocol");
-  	console.log("ws="+ws);
+  	alert("ws="+ws);
     ws.onopen = function(evt) {
         console.log("Connection waiting ...");     
         ws.send("onOpen");
