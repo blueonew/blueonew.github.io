@@ -1,0 +1,50 @@
+﻿<html style="height: 100%; padding: 0; margin: 0;">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Terminal App</title>
+</head>
+<body style="height: 96%" bgcolor="#6495ed">    
+    <div style="float:left;width:48%;height:90%" >
+        <textarea id="log" style="width:98%;height:98%" disabled="true"></textarea>
+    </div>
+
+    <script type="text/javascript">
+    function start(){
+		var appEndpoint = "org.mychannel.myapp";
+    var ws = new WebSocket("ws://10.120.220.57:7681/remote/" + appEndpoint, "lws-mirror-protocol");
+  	console.log("ws="+ws);
+    ws.onopen = function(evt) {
+        console.log("Connection waiting ...");     
+        ws.send("onOpen");
+    };
+    ws.onclose = function(evt) {
+       console.log("Connection  closed.");
+    };
+    ws.onerror = function (evt) {
+        console.log("Connection error.");
+    };
+    ws.onmessage = function(evt) {
+        if (evt.data == "pairingcompleted") {
+            log("connection "+index+" paired");
+            ws.onmessage = function(evt) {
+                if(typeof evt.data == "string"){
+                    log( "Received Message: " + evt.data);
+                }
+                else {
+                    var data = new Int8Array(evt.data);
+                    log("Received Binary Message of " + data.length + " bytes: " + data.join());
+                }
+            };
+            ws.send("Hello from HbbTV App: "+index);            
+        } else {
+            log("Unexpected message received from terminal.");
+            ws.close();
+        }
+    };        		
+  }
+    	
+  setTimeout("start()", 12000);
+       
+    </script>
+</body>
+</html>
