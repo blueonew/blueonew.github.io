@@ -22,7 +22,7 @@
        alert("Connection  closed.");
     };
     ws.onerror = function (evt) {
-        alert("Connection error." + evt.data);
+        alert("Connection error." + evt);
     };
     ws.onmessage = function(evt) {
         if (evt.data == "pairingcompleted") {
