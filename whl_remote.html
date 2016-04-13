@@ -12,21 +12,21 @@
     function start(){
 		var appEndpoint = "org.mychannel.myapp";
     var ws = new WebSocket("ws://10.120.220.83:7681/remote/" + appEndpoint, "lws-mirror-protocol");
-  	alert("ws="+ws);
+  		alert("ws="+ws);
     ws.onopen = function(evt) {
-        console.log("Connection waiting ...");     
+        alert("Connection waiting ...");     
         ws.send("onOpen");
     };
     
     ws.onclose = function(evt) {
-       console.log("Connection  closed.");
+       alert("Connection  closed.");
     };
     ws.onerror = function (evt) {
-        console.log("Connection error.");
+        alert("Connection error.");
     };
     ws.onmessage = function(evt) {
         if (evt.data == "pairingcompleted") {
-            log("connection "+index+" paired");
+            alert("connection "+index+" paired");
             ws.onmessage = function(evt) {
                 if(typeof evt.data == "string"){
                     log( "Received Message: " + evt.data);
@@ -38,7 +38,7 @@
             };
             ws.send("Hello from HbbTV App: "+index);            
         } else {
-            log("Unexpected message received from terminal.");
+            alert("Unexpected message received from terminal.");
             ws.close();
         }
     };        		
