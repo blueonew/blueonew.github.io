@@ -1,0 +1,17 @@
+This test material is Copyright 2015, 2016 Eurofins Digital Testing.
+
+For users who obtained this test case and associated test material as
+part of the official HbbTV Test Suite, these are made available under
+the terms of the Creative Commons Attribution-NonCommercial-NoDerivs
+license version 3.0, subject to the further restrictions defined in
+the HbbTV Association Test Suite License Agreement or the HbbTV
+Association Test Repository Access Agreement, one of which must first
+exist between HbbTV Association and the user.
+
+For users who obtained this test case and associated test material
+directly from Eurofins Digital Testing, these are subject to the terms of the
+relevant Ligada or test suite license agreement that must exist
+between the user and Eurofins Digital Testing.
+
+Any use of this material not under one of the three arrangements
+listed above is expressly prohibited.

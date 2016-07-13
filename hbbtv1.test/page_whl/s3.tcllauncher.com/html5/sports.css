@@ -1,0 +1,767 @@
+/* 20160612 */
+#title
+{
+    position: absolute;
+    top: 72px;
+    left: 113px;
+    color: #fff;
+    font-size: 60px;
+}
+
+#line
+{
+    position: absolute;
+    top: 157px;
+    left: 120px;
+    height: 2px;
+    width: 1680px;
+    background: url(http://s3.tcllauncher.com/html5/images/whiteline.png?md5=30464ba3ad551ad65ec0e64318dfb70e) no-repeat;
+}
+
+#teams
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.team
+{
+    position: absolute;
+    width: 280px;
+    height: 300px;
+}
+
+.team img
+{
+    position: absolute;
+    left: 71px;
+    top: 52px;
+    width: 127px;
+}
+
+.team div
+{
+    position: absolute;
+    top: 190px;
+    left: -20px;
+    width: 320px;
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+}
+
+#reminder
+{
+    position: absolute;
+    top: 83px;
+    right: 113px;
+    color: #9A9999;
+    font-size: 36px;
+}
+
+#schedule
+{
+    position: absolute;
+    top: 183px;
+    left: 100px;
+    width: 1720px;
+    height: 120px;
+}
+
+#ls
+{
+    position: absolute;
+    top: 35px;
+    left: 5px;
+    width: 570px;
+    height: 120px;
+    text-align: center;
+    font-size: 36px;
+    color: #9a9999;
+}
+
+#cs
+{
+    position: absolute;
+    top: 25px;
+    left: 575px;
+    width: 570px;
+    height: 120px;
+    text-align: center;
+    font-size: 48px;
+    color: #fff;
+}
+
+#rs
+{
+    position: absolute;
+    top: 35px;
+    left: 1145px;
+    width: 570px;
+    height: 120px;
+    text-align: center;
+    font-size: 36px;
+    color: #9a9999;
+}
+
+.fenggexian
+{
+    position: absolute;
+    left: 0px;
+    width: 1560px;
+    height: 2px;
+    background: #3E4B51;
+}
+
+#schedules
+{
+    position: absolute;
+    top: 314px;
+    left: 174px;
+}
+
+.match
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1560px;
+    height: 240px;
+}
+
+.time
+{
+    position: absolute;
+    top: 38px;
+    left: 10px;
+    color: #FFF;
+    font-size: 36px;
+}
+
+.place
+{
+    position: absolute;
+    top: 98px;
+    left: 10px;
+    color: #FFF;
+    font-size: 36px;
+}
+
+.property
+{
+    position: absolute;
+    top: 158px;
+    left: 10px;
+    color: #FFF;
+    font-size: 36px;
+}
+
+.team1
+{
+    position: absolute;
+    top: 170px;
+    left: 660px;
+    width: 428px;
+    text-align: center;
+    color: #FFF;
+    font-size: 36px;
+}
+
+.team2
+{
+    position: absolute;
+    top: 170px;
+    left: 1146px;
+    width: 428px;
+    text-align: center;
+    color: #FFF;
+    font-size: 36px;
+}
+
+.team1icon
+{
+    position: absolute;
+    top: 36px;
+    left: 810px;
+    width: 127px;
+}
+
+.team2icon
+{
+    position: absolute;
+    top: 36px;
+    left: 1296px;
+    width: 127px;
+}
+
+.vs
+{
+    position: absolute;
+    top: 93px;
+    left: 1090px;
+    width: 50px;
+    height: 42px;
+    color: #9A9999;
+    font-size: 36px;
+    background: no-repeat center;
+}
+
+.result1
+{
+    position: absolute;
+    top: 50px;
+    left: 1010px;
+    color: #FFFFFF;
+    font-size: 100px;
+}
+
+.result2
+{
+    position: absolute;
+    top: 50px;
+    left: 1175px;
+    color: #FFFFFF;
+    font-size: 100px;
+}
+
+#teamschedules
+{
+    position: absolute;
+    top: -19px;
+    left: 74px;
+}
+
+.teammatch
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1560px;
+    height: 320px;
+}
+
+.teamdate
+{
+    position: absolute;
+    top: 48px;
+    left: 10px;
+    color: #FFF;
+    font-size: 36px;
+}
+
+.teamtime
+{
+    position: absolute;
+    top: 108px;
+    left: 10px;
+    color: #FFF;
+    font-size: 36px;
+}
+
+.teamplace
+{
+    position: absolute;
+    top: 168px;
+    left: 10px;
+    color: #FFF;
+    font-size: 36px;
+}
+
+.teamproperty
+{
+    position: absolute;
+    top: 228px;
+    left: 10px;
+    color: #FFF;
+    font-size: 36px;
+}
+
+.teamteam1
+{
+    position: absolute;
+    top: 190px;
+    left: 660px;
+    width: 428px;
+    text-align: center;
+    color: #FFF;
+    font-size: 36px;
+}
+
+.teamteam2
+{
+    position: absolute;
+    top: 190px;
+    left: 1146px;
+    width: 428px;
+    text-align: center;
+    color: #FFF;
+    font-size: 36px;
+}
+
+.teamteam1icon
+{
+    position: absolute;
+    top: 56px;
+    left: 810px;
+    width: 127px;
+}
+
+.teamteam2icon
+{
+    position: absolute;
+    top: 56px;
+    left: 1296px;
+    width: 127px;
+}
+
+.teamvs
+{
+    position: absolute;
+    top: 100px;
+    left: 1090px;
+    width: 50px;
+    height: 42px;
+    color: #9A9999;
+    font-size: 36px;
+    background: no-repeat center;
+}
+
+.teamresult1
+{
+    position: absolute;
+    top: 70px;
+    left: 1010px;
+    color: #FFFFFF;
+    font-size: 100px;
+}
+
+.teamresult2
+{
+    position: absolute;
+    top: 70px;
+    left: 1175px;
+    color: #FFFFFF;
+    font-size: 100px;
+}
+
+.vfenggexian
+{
+    position: absolute;
+    top: 150px;
+    width: 3px;
+    height: 700px;
+    background: #3E4B51;
+}
+
+#scorecenter
+{
+    position: absolute;
+    top: 164px;
+    left: 174px;
+    display: none;
+}
+
+#group
+{
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    width: 1720px;
+    height: 120px;
+}
+
+#lg
+{
+    position: absolute;
+    top: 35px;
+    left: 360px;
+    width: 240px;
+    height: 120px;
+    text-align: center;
+    font-size: 36px;
+    color: #B4B6B8;
+}
+
+#cg
+{
+    position: absolute;
+    top: 26px;
+    left: 660px;
+    width: 240px;
+    height: 120px;
+    text-align: center;
+    font-size: 48px;
+    color: #fff;
+}
+
+#rg
+{
+    position: absolute;
+    top: 35px;
+    left: 960px;
+    width: 240px;
+    height: 120px;
+    text-align: center;
+    font-size: 36px;
+    color: #B4B6B8;
+}
+
+.groupteam
+{
+    position: absolute;
+    width: 1280px;
+    height: 150px;
+}
+
+.groupteam .icon
+{
+    position: absolute;
+    left: 154px;
+    top: 19px;
+    width: 72px;
+}
+
+.groupteam .name
+{
+    position: absolute;
+    top: 95px;
+    left: 107px;
+    width: 166px;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+}
+
+.groupteam .namex
+{
+    position: absolute;
+    top: 45px;
+    left: 49px;
+    width: 122px;
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+}
+
+.groupteam .rank
+{
+    position: absolute;
+    top: 45px;
+    left: 0px;
+    width: 100px;
+    color: #fff;
+    font-size: 36px;
+    text-align: left;
+}
+
+.groupteam .played
+{
+    position: absolute;
+    top: 43px;
+    left: 276px;
+    width: 223px;
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+}
+
+.groupteam .won
+{
+    position: absolute;
+    top: 43px;
+    left: 502px;
+    width: 189px;
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+}
+
+.groupteam .drawn
+{
+    position: absolute;
+    top: 43px;
+    left: 695px;
+    width: 219px;
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+}
+
+.groupteam .lost
+{
+    position: absolute;
+    top: 43px;
+    left: 917px;
+    width: 185px;
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+}
+
+.groupteam .gf
+{
+    position: absolute;
+    top: 43px;
+    left: 1105px;
+    width: 116px;
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+}
+
+.groupteam .ga
+{
+    position: absolute;
+    top: 43px;
+    left: 1224px;
+    width: 119px;
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+}
+
+.groupteam .gd
+{
+    position: absolute;
+    top: 43px;
+    left: 1346px;
+    width: 121px;
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+}
+
+.groupteam .pts
+{
+    position: absolute;
+    top: 43px;
+    left: 1470px;
+    width: 90px;
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+}
+
+#score
+{
+    position: absolute;
+    left: 10px;
+    top: 150px;
+    width: 1551px;
+    height: 701px;
+    background: url(http://s3.tcllauncher.com/html5/images/table.png?md5=fc959c55a55af6671b938aa7e5e75931) no-repeat;
+}
+
+#groupfocus
+{
+    position: absolute;
+    left: 427px;
+    top: 40px;
+}
+
+#datefocus
+{
+    position: absolute;
+    left: 507px;
+    top: 40px;
+}
+
+#final
+{
+    position: absolute;
+    left: 149px;
+    top: 195px;
+    width: 1638px;
+    height: 795px;
+    background: url(http://s3.tcllauncher.com/html5/images/vs.png?md5=3a2572a86db1adec0712c69dc0beaea5) no-repeat;
+}
+
+.finalteam
+{
+    position: absolute;
+    width: 372px;
+    height: 100px;
+}
+
+.finalteam img
+{
+    position: absolute;
+    left: 162px;
+    top: 0px;
+    width: 47px;
+}
+
+.finalteam div
+{
+    position: absolute;
+    left: 0px;
+    top: 56px;
+    width: 372px;
+    color: #fff;
+    text-align: center;
+    font-size: 21px;
+    text-align: center;
+}
+
+.finalteam1
+{
+    position: absolute;
+    width: 372px;
+    height: 100px;
+}
+
+.finalteam1 img
+{
+    position: absolute;
+    left: 150px;
+    top: 0px;
+    width: 72px;
+}
+
+.finalteam1 div
+{
+    position: absolute;
+    left: 0px;
+    top: 84px;
+    width: 372px;
+    color: #fff;
+    text-align: center;
+    font-size: 25px;
+    text-align: center;
+}
+
+.finalteamx
+{
+    position: absolute;
+    width: 372px;
+    height: 200px;
+}
+
+.finalteamx img
+{
+    position: absolute;
+    left: 122px;
+    top: 0px;
+    width: 127px;
+}
+
+.finalteamx div
+{
+    position: absolute;
+    left: 0px;
+    top: 150px;
+    width: 372px;
+    color: #fff;
+    text-align: center;
+    font-size: 25px;
+    text-align: center;
+}
+
+.container
+{
+    position: absolute;
+    left: 100px;
+    top: 183px;
+    width: 1700px;
+    height: 896px;
+    overflow: hidden;
+}
+
+.finalscore
+{
+    position: absolute;
+    color: #00BBFB;
+    width: 100px;
+    height: 30px;
+    font-size: 25px;
+}
+
+.finalscore1
+{
+    position: absolute;
+    color: #00BBFB;
+    width: 100px;
+    height: 30px;
+    font-size: 36px;
+}
+
+#dir-l
+{
+    position: absolute;
+    left: 54px;
+    top: 520px;
+    width: 36px;
+    height: 68px;
+    background: url(http://s3.tcllauncher.com/html5/images/left.png?md5=0bf9424ac3d406367d254b494d7b8a98) no-repeat;
+}
+
+#dir-r
+{
+    position: absolute;
+    right: 54px;
+    top: 520px;
+    width: 36px;
+    height: 68px;
+    background: url(http://s3.tcllauncher.com/html5/images/right.png?md5=6539216fc0df75b85f9d18717e8fb8ce) no-repeat;
+}
+
+.teamscore1
+{
+    position: absolute;
+    top: 60px;
+    left: 1010px;
+    color: #FFFFFF;
+    font-size: 100px;
+}
+
+.teamscore2
+{
+    position: absolute;
+    top: 60px;
+    left: 1175px;
+    color: #FFFFFF;
+    font-size: 100px;
+}
+
+#progressbarbg
+{
+    position: absolute;
+    right: 58px;
+    top: 281px;
+    width: 12px;
+    height: 670px;
+    background: url(http://s3.tcllauncher.com/html5/images/rollbackgroudn.png?md5=6d23f430be8a28008ea7b9cd40037ee9) no-repeat;
+    display: none;
+}
+
+#progressbar
+{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 12px;
+    height: 174px;
+    background: url(http://s3.tcllauncher.com/html5/images/roll.png?md5=3608e2d776dcbd86684a33bb5d0f0ba7) no-repeat;
+}
+
+#reminderPic
+{
+    position:relative;
+    display:inline;
+    top:-8px;
+    width: 60px;
+    height: 60px;
+}
+
+#beforePic
+{
+    float:left;
+    white-space:nowrap;
+}
+
+#afterPic
+{
+    float:right;
+    white-space:nowrap;
+}

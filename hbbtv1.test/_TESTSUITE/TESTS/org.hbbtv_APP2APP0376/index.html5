@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- Copyright Eurofins Digital Product Testing UK Ltd 2015 -->
+        <title>org.hbbtv_APP2APP0376 - App2App - 10 pairings - 5 large messages per pairing in 10 sec to remote end-point</title>
+        <link rel="stylesheet" type="text/css" href="http://hbbtv1.test/_TESTSUITE/TESTS/org.hbbtv_APP2APP0376/base.css">
+        <link rel="stylesheet" type="text/css" href="http://hbbtv1.test/_TESTSUITE/TESTS/org.hbbtv_APP2APP0376/ui.css">
+        <script src="http://hbbtv1.test/_TESTSUITE/RES/testsuite.js"></script>
+        <script src="http://hbbtv1.test/_TESTSUITE/TESTS/org.hbbtv_APP2APP0376/main.js"></script>
+    </head>
+    <body>
+        <object type="application/oipfApplicationManager" id="app-man"></object>
+        <object type="application/hbbtvCSManager" id="cs-man"></object>
+        <div id="ui">
+            <div id="header">
+                <div id="logo-container">
+                    <div id="logo-container-middle" class="middle">
+                        <img id="logo"
+                        src="http://hbbtv1.test/_TESTSUITE/RES/CONTRIBUTORS/EUROFINS/eurofins-logo-212x39.png"
+                        alt="Eurofins Digital Testing">
+                    </div>
+                </div>
+                <div id="test-id-container">
+                    <div id="test-id" class="middle">org.hbbtv_APP2APP0376</div>
+                </div>
+            </div>
+            <div id="test-title">App2App - 10 pairings - 5 large messages per pairing in 10 sec to remote end-point</div>
+            <div id="debugging"></div>
+        </div>
+    </body>
+</html>

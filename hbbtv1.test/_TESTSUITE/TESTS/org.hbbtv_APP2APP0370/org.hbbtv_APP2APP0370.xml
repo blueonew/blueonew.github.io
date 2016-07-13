@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testCase id="org.hbbtv_APP2APP0370" version="1"
+          xmlns="http://www.hbbtv.org/2012/B/testCase"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.hbbtv.org/2012/B/testCase ../../RES/testCase.xsd">
+    <originInformation>
+        <contributor part="assertion" company="HbbTV" contact="info@hbbtv.org"/>
+        <contributor part="procedure" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com"/>
+        <contributor part="implementation" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com" license="Commercial. Copyright Eurofins Digital Testing"/>
+    </originInformation>
+    <title>App2App - Fragmented data frames with maximum size.</title>
+    <appliesTo>
+        <spec name="HBBTV" version="1.3.1"/>
+    </appliesTo>
+    <specReference name="HBBTV" version="1.3.1">
+        <specSection chapter="14.5.5">
+            Once paired and connections to both clients are open, the terminal shall act as a relay to pass messages between them, providing, in effect, a full-duplex bi-directional communication stream. When either client sends a WebSocket message, consisting of one or more protocol frames, the terminal, upon receipt of those frames, shall immediately relay its contents to the other client via the corresponding WebSocket connection and maintaining the same payload type. The terminal shall support all data frame types and both unfragmented and fragmented frames as required by RFC 6455 [40]. When relaying a payload received from a client, the terminal is not required to fragment the payload across frames in the same way as the frames it received. The terminal shall be able to relay messages with a payload size of up to and including 131 072 bytes. For messages sent from the remote client, the terminal shall be able to relay the message, and have it received by the local application (client), if it is fragmented where each frame may carry any number of bytes up to the size of the message.
+        </specSection>
+    </specReference>
+    <assertionText>
+        After the connections to the app2app service end-point of an HbbTV application and a companion screen application have been paired, and the companion screen application sends a fragmented frame containing a text message with a size of 131 072 bytes where 127 fragments have a size of 1024 bytes and 1 fragment has a size of 1 byte and one fragment has a size of 1023 bytes to the app2app service, the terminal delivers the text message properly to the application on the local client.
+    </assertionText>
+    <preconditions/>
+    <testProcedure>
+        <testStep>
+            <procedure>Create a reference to the HbbTVCSManager embedded object</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Obtain the local app2app URL from the HbbTVCSManager instance by calling getApp2AppLocalBaseURL()</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Obtain the remote app2app URL from the HbbTVCSManager instance by calling getApp2AppRemoteBaseURL()</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Attempt to open the local App2App web socket using the app2app local base URL and the app end-point</procedure>
+            <expectedBehaviour>The 'onopen' event is fired for the local web socket</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Attempt to open the remote App2App web socket using the app2app remote base URL and the app end-point</procedure>
+            <expectedBehaviour>The onOpen callback for the remote web socket is called</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Wait for a 'pairingcompleted' message to be received on the local web socket</procedure>
+            <expectedBehaviour>An 'onmessage' event is fired fired for the local web socket, with the event containing the string 'pairingcompleted'</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Wait for a 'pairingcompleted' message to be received on the remote web socket</procedure>
+            <expectedBehaviour>The 'onMessage' callback is called for the remote web socket, with the parameter containing the string 'pairingcompleted'</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Send a 131,072 byte binary message from the remote web socket, sending 127 fragments of 1024 bytes, one fragment of 1 byte, and one fragment of 1023 bytes</procedure>
+            <expectedBehaviour>The messages should be received on the local web socket and should be 131,072 bytes in length, and identical to the message sent by the companion screen application</expectedBehaviour>
+        </testStep>
+    </testProcedure>
+    <passCriteria>
+        The HbbTV application and companion screen were paired, the companion screen sent a text message with a size of 131 072 bytes where 127 fragments have a size of 1024 bytes and 1 fragment has a size of 1 byte and one fragment has a size of 1023 bytes, the message was delivered properly to the application on the local client.
+    </passCriteria>
+    <history>
+        <historyItem name="HbbTV" date="2014-12-11" part="assertion" type="accepted"/>
+        <historyItem name="HbbTV" date="2015-09-03" part="procedure" type="submitted"/>
+        <historyItem name="HbbTV" date="2015-11-25" part="implementation" type="submitted"/>
+    </history>
+</testCase>

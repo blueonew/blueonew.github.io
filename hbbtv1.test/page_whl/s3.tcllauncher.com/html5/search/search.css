@@ -1,0 +1,198 @@
+@CHARSET "UTF-8";
+#titleName
+{
+    position:relative;
+    top:83px;
+    left:116px;
+	color:white;
+	font-size:60px;
+	font-family: Arial;
+	font-weight:100;
+}
+
+#popularSearches
+{
+    position:fixed;
+    top:590px;
+    left:110px;
+	color:white;
+	font-size:40px;
+	font-family:Arial;
+	font-weight:80;
+}
+
+#lineImage
+{
+	position:fixed;
+	top:157px;
+	left:95px;
+	height:2px;
+	width:1680px;		
+} 
+
+#Frame
+{
+	position:absolute;
+	top:340px;
+	left:354px;
+	width:1020px;
+	height:86px;
+	font-size:36px;	
+}
+#searchFrame
+{
+
+}
+  /* set the palceholder color*/
+::-webkit-input-placeholder 
+{ 
+    color:    #333538;
+}
+
+#Button 
+{
+	position:absolute;
+	top:342px;
+	left:1387px;
+	width:170px;
+	height:80px;
+}
+
+#searchButton
+{	
+}
+/*the pic of pop research */   
+.popCover
+{
+	
+	position:relative;
+	width:330px;
+	height:330px;
+	border:none;
+	padding:0px;
+	background-repeat:no-repeat;
+}
+
+
+.defaultPoster
+{
+	position:absolute;
+	top:587px;
+	width:330px;
+	height:330px;
+	border:none;
+	padding:0px;	
+	background :url(http://s3.tcllauncher.com/html5/images/video-Default.png?md5=6ca6fb51722a4c79f613dcdbe20cf9c5);
+	background-size:640px 480px;
+	background-position:-150px -50px;
+}
+
+#pop1
+{
+	position:absolute;
+	top:587px;
+	width:330px;
+	height:330px;
+	left:95px;
+	border:none;
+	padding:0px;	
+}
+
+#pop2
+{
+	position:absolute;
+	top:587px;
+	width:330px;
+	height:330px;
+	left:445px;
+	border:none;
+	padding:0px;	
+}
+  
+#pop3
+{
+	position:absolute;
+	top:587px;
+	width:330px;
+	height:330px;
+	left:795px;
+	border-width:0px;
+	padding:0px;
+}
+
+#pop4
+{
+	position:absolute;
+	top:587px;
+	width:330px;
+	height:330px;
+	left:1145px;
+	border-width:0px;
+	padding:0px;
+}
+
+#pop5
+{
+	position:absolute;
+	top:587px;
+	width:330px;
+	height:330px;
+	left:1495px;
+	border-width:0px;
+	padding:0px;	
+}
+
+/* #focusPicSearchFrame
+{
+	position:absolute;
+	left:-13px;
+	top:-12px;
+	width:1049px;
+	height:108px;
+} */
+  
+/* #focusPicSearchButton
+{
+	position:absolute;
+	left:-14px;
+	top:-14px;
+	width:199px;
+	height:108px;
+} */
+
+.backgroundPic
+{
+	position:absolute;
+	left:-24px;
+	top:-24px;
+	height:402px;
+	width:402px;
+}
+
+.videoTitle
+{ 
+	width:310px;
+	left:20px;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow: hidden;
+	height:50px;
+	color:white;
+	position:absolute;
+	font-size:30px;
+	font-weight:80;
+	font-family:Arial;
+	top:290px;
+    	text-align:center; 
+  
+}
+.inputString
+{
+	color:#FFFFFF
+}
+
+
+
+
+
+

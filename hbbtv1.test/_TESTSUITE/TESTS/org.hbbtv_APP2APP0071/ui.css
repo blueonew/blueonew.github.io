@@ -1,0 +1,107 @@
+/* Classes */
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* Style */
+
+#test-title,
+#debugging {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+
+#ui {
+    opacity: 0.8;
+}
+
+#header {
+    background: none repeat scroll 0 0 #2B2C7D;
+    color: #FFFFFF;
+}
+
+#logo-container  img {
+    border-style: none;
+}
+
+/* Layout */
+
+#ui {
+    position: fixed;
+}
+
+#header,
+#test-title,
+#debugging,
+#logo-container,
+#ui,
+#test-id-container {
+    display: block;
+}
+
+#logo-container {
+    float: left;
+}
+
+#test-id-container {
+    float: right;
+}
+
+#header,
+#test-title,
+#debugging {
+    margin: 2px 0;
+    padding: 2px;
+}
+
+/* Fonts */
+
+#header,
+#test-title,
+#debugging {
+    font-family: sans-serif;
+}
+
+#test-id,
+#debugging {
+    font-size: 8pt;
+}
+
+#test-id {
+    font-weight: bold;
+}
+
+#title {
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+#debugging {
+    font-size: 0.8em;
+}
+
+/* UI size and position */
+#ui {
+    width: 50%; left: 25%; top: 30%;
+}
+
+/* Header height */
+#header,
+#logo-container-middle,
+#test-id {
+    height: 20px;
+}
+
+/* Logo size */
+#logo {
+    width: 128px; height: 14px;
+}
+
+#playerdiv {
+    position: absolute;
+    height: 500px;
+    float: left;
+    z-index: -1;
+    top: 0px;
+}

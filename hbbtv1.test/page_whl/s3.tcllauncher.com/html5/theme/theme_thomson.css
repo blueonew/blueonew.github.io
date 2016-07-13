@@ -1,0 +1,242 @@
+﻿/* channelVideos */
+.videoBody
+{
+	background-image:url('http://s3.tcllauncher.com/html5/images/theme/background_body.png?md5=6dd1036160fea22eb22df85b42b7b303'); 
+	border:none;
+	padding:0;
+	margin:0;
+	background-repeat:no-repeat;
+}
+.focusFrameVideo
+{
+	position:absolute;
+	left:-24px;
+	top:-24px;
+	height:402px;
+	width:402px;
+	background-image:url('http://s3.tcllauncher.com/html5/images/theme/focus_402x402.png?md5=fde3146a8df22e416c668608828c9966');
+	display:none;
+}
+
+/* history 4 */
+.historyBG
+{
+	background-image: url("http://s3.tcllauncher.com/html5/images/theme/background_body.png?md5=6dd1036160fea22eb22df85b42b7b303");
+}
+
+.itemPic
+{
+	position:absolute;
+	top:-6px;
+	left:-4px;
+	height:378px;
+	width:378px;
+	background-image: url("http://s3.tcllauncher.com/html5/images/theme/focus_378x378.png?md5=f8c41e85282d56448706d193c5729bf4");
+}
+
+.delOneCss_focus
+{
+	position:absolute;
+	display:inline;
+	z-index:201;
+	left:640px;
+	top:10px;
+	width:240px;
+	text-align:center;
+	line-height:94px;
+	height:94px;
+	font-size:36px;
+	background-image:url('http://s3.tcllauncher.com/html5/images/theme/button_240x94.png?md5=4f207e0bf89b033451f472a8d99d3157');
+	color:#ffffff;
+	
+}
+
+
+.delALLCss_focus
+{
+	position:absolute;
+	display:inline;
+	z-index:201;
+	left:1040px;
+	top:10px;
+	width:240px;
+	text-align:center;
+	line-height:94px;
+	height:94px;
+	font-size:36px;
+	background-image:url('http://s3.tcllauncher.com/html5/images/theme/button_240x94.png?md5=4f207e0bf89b033451f472a8d99d3157');
+	color:#aaaaaa;
+	
+}
+
+/* player */
+
+/*焦点样式*/
+.imgfocus
+{
+	background-image:url(http://s3.tcllauncher.com/html5/images/theme/focus_132x94.png?md5=0105eb1c2b7e7792233ce6ebf8511b66); 
+	background-repeat:no-repeat;
+}
+
+
+/*resultsearch  */
+.resultsearchBody 
+{
+	background-image:url('http://s3.tcllauncher.com/html5/images/theme/background_body.png?md5=6dd1036160fea22eb22df85b42b7b303'); 
+	border:none;
+	padding:0;
+	margin:0;
+	background-repeat:no-repeat;
+} 
+
+.focusFrameSearch
+{
+	position:absolute;
+	left:-24px;
+	top:-24px;
+	height:402px;
+	width:402px;
+	background-size:100% 100%;	
+	background-image:url('http://s3.tcllauncher.com/html5/images/theme/focus_402x402.png?md5=fde3146a8df22e416c668608828c9966');
+	display:none;
+	z-index:10;
+}
+
+
+/* search */
+.searchBody
+{
+	background:url(http://s3.tcllauncher.com/html5/images/theme/background_body.png?md5=6dd1036160fea22eb22df85b42b7b303);
+	width:1920px;
+	height:1080px;
+	background-repeat:no-repeat;
+	
+}
+
+.backgroundPic_pop
+{
+	display:inline;
+	position:absolute;
+	left:-24px;
+	top:-24px;
+	height:402px;
+	width:402px;
+	background-image: url("http://s3.tcllauncher.com/html5/images/theme/focus_402x402.png?md5=fde3146a8df22e416c668608828c9966");
+}
+
+.backgroundPic_search
+{
+	display:inline;
+	position:absolute;
+	left:-13px;
+	top:-12px;
+	width:1049px;
+	height:108px;
+	background-image: url("http://s3.tcllauncher.com/html5/images/theme/focus_1049x108.png?md5=8f2cf56d0be13278523c8d10af84ee8a");
+}
+
+.backgroundPic_button
+{
+	display:inline;
+	position:absolute;
+	left:-14px;
+	top:-14px;
+	width:199px;
+	height:108px;
+	background-image: url("http://s3.tcllauncher.com/html5/images/theme/focus_160x74.png?md5=58cd92a9a3983abff0c3442448ad8575");
+}
+
+
+/* index 3 */
+
+.btn 
+{
+	background: url(http://s3.tcllauncher.com/html5/images/theme/button_353x112.png?md5=eee34ecc90295c190c0c63f02e6ce6f7) no-repeat;
+	font-family: 'Helvetica World';
+	color: #fff;
+}
+
+.mainFocusActive 
+{
+    background: url(http://s3.tcllauncher.com/html5/images/theme/Tabfocus.png?md5=f7a5b76711a9509fb4393a9e8c028f5c) no-repeat center; 
+}
+
+.historyDelcheckedbtn 
+{
+	display: inline;
+	background-image: url(http://s3.tcllauncher.com/html5/images/theme/button_240x94.png?md5=4f207e0bf89b033451f472a8d99d3157);
+	font-family: 'Helvetica World';
+	font-size: 5px;
+	text-decoration: none;
+	color: #172E06;
+}
+
+
+
+/* main 7 */
+
+.body_comm
+{
+    margin:0px;
+    background:url(http://s3.tcllauncher.com/html5/images/theme/background_body.png?md5=6dd1036160fea22eb22df85b42b7b303) no-repeat;
+}
+
+.body_tv
+{
+    margin:0px;
+    background:url(http://s3.tcllauncher.com/html5/images/theme/background_tv.png?md5=2936f69e6a8a827a3a7610d84ab6036e) no-repeat;
+}
+
+/* 增加对焦点图的修饰css */
+.themeImg_330x330
+{
+	background-image: url("http://s3.tcllauncher.com/html5/images/theme/focus_330x330.png?md5=47db1ac57c5e0666f43d53055f5007b7");
+}
+
+.themeImg_621x621
+{
+	background-image: url("http://s3.tcllauncher.com/html5/images/theme/focus_621x621.png?md5=92f17f3ac4d986ee5010e48add524e96");
+}
+
+
+.themeImg_621x330
+{
+	background-image: url("http://s3.tcllauncher.com/html5/images/theme/focus_621x330.png?md5=ec9f2ff54cfb60cc5a7794f48945185b");
+}
+
+.themeImg_330x621
+{
+	background-image: url("http://s3.tcllauncher.com/html5/images/theme/focus_330x621.png?md5=373bcb73f35faf06152d2078c8a6f60d");
+}
+
+.themeImg_1066x621
+{
+	background-image: url("http://s3.tcllauncher.com/html5/images/theme/focus_1066x621.png?md5=a7bdb9025489df39ad78e9220f18e7d7");
+}
+
+
+.themeImg_234x233
+{
+	background-image: url("http://s3.tcllauncher.com/html5/images/theme/focus_234x233.png?md5=7a860b1245503f8bfb155e0ebc2469c0");
+}
+
+.groupfocus
+{
+    width: 707px;
+    height: 81px;
+    background: url(http://s3.tcllauncher.com/html5/images/theme/focus_schedule.png?md5=d5377a38af41c99dee0da97b377ada6a) no-repeat;
+}
+
+.teamfocus
+{
+    position: absolute;
+    width: 141px;
+    height: 141px;
+    background: url(http://s3.tcllauncher.com/html5/images/theme/focus_team.png?md5=3751c6eceade0fb22e9c826d74f4658d) no-repeat;
+}
+
+.sportsBody
+{
+	background: url('http://s3.tcllauncher.com/html5/images/theme/background_body.png?md5=6dd1036160fea22eb22df85b42b7b303') no-repeat; 
+}
+

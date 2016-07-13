@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testCase id="org.hbbtv_APP2APP0070" version="1"
+          xmlns="http://www.hbbtv.org/2012/B/testCase"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.hbbtv.org/2012/B/testCase ../../RES/testCase.xsd">
+    <originInformation>
+        <contributor part="assertion" company="HbbTV" contact="info@hbbtv.org"/>
+        <contributor part="procedure" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com"/>
+        <contributor part="implementation" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com" license="Commercial. Copyright Eurofins Digital Testing"/>
+    </originInformation>
+    <title>App2App - Pairing clients with maximum app end-point</title>
+    <appliesTo>
+        <spec name="HBBTV" version="1.3.1"/>
+    </appliesTo>
+    <specReference name="HBBTV" version="1.3.1">
+        <specSection chapter="14.5.4">
+            The terminal shall support an app-endpoint that is least 1000 characters in length and which contains any characters permitted in a resource-name by RFC 6455 [40]. The terminal shall pair two waiting connections according to the following rules: * One waiting connection shall be on the local service endpoint (and therefore be inferred to have come from the HbbTV application client). * One other waiting connection shall be on the remote service endpoint (and therefore be inferred to have come from a remote client, such as a Companion Screen Application). * The app-endpoint portion of the resource name used in the client handshake request shall match between both waiting connections.
+        </specSection>
+        <specSection chapter="14.5.5">
+            When connections from two clients enter into a state of being paired to each other, the terminal shall immediately inform both clients by sending them a Data frame of type Text (as defined by the WebSocket protocol specification clause 5.6 [40]) with as Payload data the UTF-8 encoded text 'pairingcompleted'. The connections are now both considered to be open, and the clients to be paired.
+        </specSection>
+    </specReference>
+    <specReference name="RFC6455" version="NA">
+        <specSection chapter="3">
+            The "resource-name" [...] can be constructed by concatenating the following: * "/" if the path component is empty * the path component * "?" if the query component is non-empty * the query component
+        </specSection>
+    </specReference>
+    <specReference name="RFC3986" version="NA">
+        <specSection chapter="3.3">
+            path = path-abempty ; begins with "/" or is empty / path-absolute ; begins with "/" but not "//" / path-noscheme ; begins with a non-colon segment / path-rootless ; begins with a segment / path-empty ; zero characters path-abempty = *( "/" segment ) path-absolute = "/" [ segment-nz *( "/" segment ) ] path-noscheme = segment-nz-nc *( "/" segment ) path-rootless = segment-nz *( "/" segment ) path-empty = 0&lt;pchar&gt; segment = *pchar segment-nz = 1*pchar segment-nz-nc = 1*( unreserved / pct-encoded / sub-delims / "@" ) ; non-zero-length segment without any colon ":" pchar = unreserved / pct-encoded / sub-delims / ":" / "@"
+        </specSection>
+        <specSection chapter="A">
+            pchar = unreserved / pct-encoded / sub-delims / ":" / "@" query = *( pchar / "/" / "?" ) [...] pct-encoded = "%" HEXDIG HEXDIG unreserved = ALPHA / DIGIT / "-" / "." / "_" / "~" [...] sub-delims = "!" / "$" / "&amp;" / "'" / "(" / ")"/ "*" / "+" / "," / ";" / "="
+        </specSection>
+    </specReference>
+    <specReference name="RFC2234" version="NA">
+        <specSection chapter="6.1">
+            ALPHA = %x41-5A / %x61-7A ; A-Z / a-z DIGIT = %x30-39; 0-9 HEXDIG = DIGIT / "A" / "B" / "C" / "D" / "E" / "F"
+        </specSection>
+    </specReference>
+    <assertionText>
+        When an application connects to the local app2app service endpoint with an app endpoint that contains all allowed characters for a resource-name as defined in RFC 6455, that has a query component and that is exactly 1000 characters in length, and a companion screen application connects to the remote app2app service end-point with the same app endpoint, the terminal shall open a Web Socket connection for both clients, and once both connections are open the terminal shall send them both a 'pairingcompleted' message encoded in UTF-8.
+    </assertionText>
+    <preconditions/>
+    <testProcedure>
+        <testStep>
+            <procedure>Create a reference to the HbbTVCSManager embedded object</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Obtain the local app2app URL from the HbbTVCSManager instance by calling getApp2AppLocalBaseURL()</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Obtain the remote app2app URL from the HbbTVCSManager instance by calling getApp2AppRemoteBaseURL()</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Attempt to open the local app2app web socket by creating a new web socket object using 'new WebSocket(url)', passing in a 'url' parameter which is composed of the app2app local base URL, the app end point of 1000 characters which contains all of the allowed characters in RFC 3986, and a query string</procedure>
+            <expectedBehaviour>The 'onopen' event is fired for the local web socket</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Attempt to open the remote app2app web socket by calling 'testAPI.openWebSocket(url)', passing in a 'url' parameter which is composed of the app2app remote base URL, the app end point of 1000 characters which contains all of the allowed characters in RFC 3986, and a query string</procedure>
+            <expectedBehaviour>The 'onConnect' callback for the remote web socket is called</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Wait for a 'pairingcompleted' message to be received on the local web socket</procedure>
+            <expectedBehaviour>An 'onmessage' event is fired fired for the local web socket, with the event containing the string 'pairingcompleted'</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Wait for a 'pairingcompleted' message to be received on the remote web socket</procedure>
+            <expectedBehaviour>The 'onMessage' callback is called for the remote web socket, with the parameter containing the string 'pairingcompleted'</expectedBehaviour>
+        </testStep>
+    </testProcedure>
+    <passCriteria>
+        The application and companion screen application connected to the app2app local and remote service end-points, using the same app-endpoint. Pairing completed messages were sent to both web socket connections, both of which were opened using the same app2app service end-point using URLs that contain a query component, having a length of 1000 characters, and use all allowed characters for a resource-name as defined in RFC 6455.
+    </passCriteria>
+    <history>
+        <historyItem name="HbbTV" date="2014-12-11" part="assertion" type="accepted"/>
+        <historyItem name="HbbTV" date="2015-09-01" part="procedure" type="submitted"/>
+        <historyItem name="HbbTV" date="2015-11-25" part="implementation" type="submitted"/>
+    </history>
+</testCase>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testCase id="org.hbbtv_DISCOVERY0030" version="1"
+          xmlns="http://www.hbbtv.org/2012/B/testCase"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.hbbtv.org/2012/B/testCase ../../RES/testCase.xsd">
+    <originInformation>
+        <contributor part="assertion" company="HbbTV" contact="info@hbbtv.org"/>
+        <contributor part="procedure" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com"/>
+        <contributor part="implementation" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com" license="Commercial. Copyright Eurofins Digital Testing"/>
+    </originInformation>
+    <title>Discovery - Device description response (2)</title>
+    <appliesTo>
+        <spec name="HBBTV" version="1.3.1"/>
+    </appliesTo>
+    <specReference name="HBBTV" version="1.3.1">
+        <specSection chapter="14.7.2">
+            For terminal and service endpoint discovery, the terminal shall support DIAL [50]. [...] an HTTP GET to the URL obtained from the LOCATION: header in the M-SEARCH response. This HTTP response contains an Application-URL header and a body. The response body is a UPnP device description as required by clause 5.4 of DIAL [50]
+        </specSection>
+    </specReference>
+    <specReference name="DIAL" version="1.7">
+        <specSection chapter="5.4">
+            In addition to the requirements of [1], the request SHALL NOT be redirected.
+        </specSection>
+    </specReference>
+    <assertionText>
+        The terminal shall not redirect an HTTP GET request to the URL provided in the Location header of the DIAL M-SEARCH response.
+    </assertionText>
+    <preconditions/>
+    <testProcedure>
+        <testStep>
+            <procedure>Call 'dial.doMSearch()', passing an 'onDIALServerDiscovery' callback function</procedure>
+        </testStep>
+        <testStep>
+            <procedure>'onDIALServerDiscovery' callback function is called with 'locationHeader' string</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Call 'dial.getDeviceDescription()', passing the 'locationHeader' as the 'url' parameter, null as 'origin', and the 'onGetDeviceDescription' function as the 'callback' parameter</procedure>
+        </testStep>
+        <testStep>
+            <procedure>The 'onGetDeviceDescription' callback is called with the resulting 'applicationUrl', 'didRedirect', and 'allowOrigin' parameters. 'didRedirect' must be equal to false</procedure>
+        </testStep>
+    </testProcedure>
+    <passCriteria>
+        The terminal did not redirect the HTTP GET request to the URL provided in the Location header of the DIAL M-SEARCH response.
+    </passCriteria>
+    <history>
+        <historyItem name="HbbTV" date="2014-12-10" part="assertion" type="accepted"/>
+        <historyItem name="HbbTV" date="2015-08-07" part="procedure" type="submitted"/>
+        <historyItem name="HbbTV" date="2015-11-25" part="implementation" type="submitted"/>
+    </history>
+</testCase>

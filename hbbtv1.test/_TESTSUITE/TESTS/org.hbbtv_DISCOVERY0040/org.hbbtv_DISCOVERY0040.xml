@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testCase id="org.hbbtv_DISCOVERY0040" version="1"
+          xmlns="http://www.hbbtv.org/2012/B/testCase"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.hbbtv.org/2012/B/testCase ../../RES/testCase.xsd">
+    <originInformation>
+        <contributor part="assertion" company="HbbTV" contact="info@hbbtv.org"/>
+        <contributor part="procedure" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com"/>
+        <contributor part="implementation" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com" license="Commercial. Copyright Eurofins Digital Testing"/>
+    </originInformation>
+    <title>Discovery - Device description response (3)</title>
+    <appliesTo>
+        <spec name="HBBTV" version="1.3.1"/>
+    </appliesTo>
+    <specReference name="HBBTV" version="1.3.1">
+        <specSection chapter="14.7.2">
+            The DIAL Application Resource URL for HbbTV is the DIAL REST Service URL followed by a single slash character ('/') and the application name 'HbbTV'. For example: "http://192.168.1.11:11111/apps/HbbTV". The terminal shall support the HbbTV DIAL application, and (shall) respond to an HTTP GET request to the DIAL Application Resource URL for HbbTV with a 200 OK response. The response shall include an XML document, as described in clause 6.1.2 and Annex A of DIAL [51], in the body. The XML document in the HTTP response shall include the mandatory elements and attributes defined in clause 6.1.2 and Annex A of DIAL [51]. There shall be one &lt;additionalData&gt; element containing one of each of the following elements:* An &lt;X_HbbTV_App2AppURL&gt; element that provides the absolute URL of an Application to Application communication service endpoint, i.e. a Web Socket Server URL, as defined in clause 14.5 and the W3C Web Socket protocol specification [40]. * An &lt;X_HbbTV_InterDevSyncURL&gt; element that provides the absolute URL of a CSS-CII service endpoint, i.e. a URL, as defined in clause 13.6 that is used for inter-device synchronisation. * An &lt;X_HbbTV_UserAgent&gt; element that provides the value of the HbbTV terminal's User Agent header as defined in clause 7.3.2.4. See also clause 14.6.3. The xmlns attribute for the HbbTV elements defined above shall be present, and shall be set to:urn:hbbtv:HbbTVCompanionScreen:2014 [...] The additional elements carried in the &lt;additionalData&gt; element shall be encoded using the following XML Schema: &lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:hbbtv:HbbTVCompanionScreen:2014" targetNamespace="urn:hbbtv:HbbTVCompanionScreen:2014" elementFormDefault="qualified"&gt;&lt;xs:element name="X_HbbTV_App2AppURL" type="xs:anyURI"/&gt;&lt;xs:element name="X_HbbTV_InterDevSyncURL" type="xs:anyURI"/&gt;&lt;xs:element name="X_HbbTV_UserAgent" type="xs:string"/&gt;&lt;/xs:schema&gt;
+        </specSection>
+    </specReference>
+    <specReference name="DIAL" version="1.7">
+        <specSection chapter="6.1.2">
+            The MIME type of the response SHALL be text/xml and the character encoding SHALL be UTF-8 and SHALL be explicitly indicated with the charset MIME parameter [...] The XML document SHALL conform to the schema defined in Annex A
+        </specSection>
+        <specSection chapter="A">
+            &lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;xs:schema targetNamespace="urn:dial-multiscreen-org:schemas:dial" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:dial-multiscreen-org:schemas:dial"&gt;&lt;xs:import namespace="http://www.w3.org/2005/Atom" schemaLocation="atom.xsd"/&gt;&lt;xs:element name="service" type="ServiceType"/&gt;&lt;xs:complexType name="ServiceType"&gt;&lt;xs:sequence&gt;&lt;xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/&gt;&lt;xs:element name="options" type="optionsType" minOccurs="0" maxOccurs="1"/&gt;&lt;xs:element name="state" type="xs:string" minOccurs="1" maxOccurs="1"/&gt;&lt;xs:element name="link" type="linkType" minOccurs="0" maxOccurs="1"/&gt;&lt;xs:element name="additionalData" minOccurs="0" maxOccurs="1"&gt;&lt;xs:complexType&gt;&lt;xs:sequence&gt;&lt;xs:any minOccurs="0" processContents="lax"/&gt;&lt;/xs:sequence&gt;&lt;/xs:complexType&gt;&lt;/xs:element&gt;&lt;/xs:sequence&gt;&lt;xs:attribute name="dialVer" type="xs:string" use="optional"/&gt;&lt;/xs:complexType&gt;&lt;xs:complexType name="optionsType"&gt;&lt;xs:attribute name="allowStop" type="xs:boolean" use="optional"/&gt;&lt;/xs:complexType&gt;&lt;xs:complexType name="linkType" mixed="true"&gt;&lt;xs:attribute name="href" use="required" type="xs:anyURI"/&gt;&lt;xs:attribute name="rel" type="xs:string" use="optional"/&gt;&lt;/xs:complexType&gt;&lt;/xs:schema&gt;
+        </specSection>
+    </specReference>
+    <assertionText>
+        The terminal shall respond to an HTTP GET request to the DIAL Application Resource URL for HbbTV of the terminal with a 200 OK response code, with the HTTP header Content-Type signalling a mime type "text/xml" and a character encoding UTF-8 and with a response body conforming to the XML schema defined in annex A of DIAL and where the additionalData element conforms to the XML schema defined in clause 14.7.2.
+    </assertionText>
+    <preconditions/>
+    <testProcedure>
+        <testStep>
+            <procedure>Call 'dial.doMSearch()', passing an 'onDIALServerDiscovery' callback function</procedure>
+        </testStep>
+        <testStep>
+            <procedure>'onDIALServerDiscovery' callback function is called with 'locationHeader' string</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Call 'dial.getDeviceDescription()', passing the 'locationHeader' as the 'url' parameter, null as 'origin', and the 'onGetDeviceDescription' function as the 'callback' parameter</procedure>
+        </testStep>
+        <testStep>
+            <procedure>The 'onGetDeviceDescription' callback is called with the resulting 'applicationUrl', 'didRedirect', and 'allowOrigin' parameters. 'didRedirect' must be equal to false</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Call 'dial.getHbbtvAppDescription()', passing the previously stored application URL for the 'applicationUrl' parameter, true for the 'schemaValidation' parameter, null for the 'origin' and an 'onGetHbbtvApplication' callback function for the 'callback' parameter</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Check that the 'onGetHbbtvApplication' callback function is called</procedure>
+        </testStep>
+    </testProcedure>
+    <passCriteria>
+        The terminal responded to the HTTP GET request to the DIAL Application Resource URL with a 200 OK response code, with the HTTP Header Content-Type "text/xml", a character encoding UTF-8, and an XML response body conforming to the XML schema in Annex A of DIAL, and where the the additionalData element conforms to the XML schema defined in clause 14.7.2.
+    </passCriteria>
+    <history>
+        <historyItem name="HbbTV" date="2014-12-10" part="assertion" type="accepted"/>
+        <historyItem name="HbbTV" date="2015-08-07" part="procedure" type="submitted"/>
+        <historyItem name="HbbTV" date="2015-08-12" part="implementation" type="submitted"/>
+    </history>
+</testCase>

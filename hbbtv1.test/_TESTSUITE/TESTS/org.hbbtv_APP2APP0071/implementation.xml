@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testImplementation id="org.hbbtv_APP2APP0071" xmlns="http://www.hbbtv.org/2012/testImplementation">
+    <playoutSets>
+       <playoutSet id="1" definition="org.hbbtv_APP2APP0071.playout.xml" />
+    </playoutSets>
+</testImplementation>

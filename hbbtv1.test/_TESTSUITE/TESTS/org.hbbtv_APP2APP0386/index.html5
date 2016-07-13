@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- Copyright Eurofins Digital Testing 2015 -->
+        <title>HbbTV DIAL Application Representation</title>
+        <link rel="stylesheet" type="text/css" href="http://hbbtv1.test/_TESTSUITE/TESTS/org.hbbtv_APP2APP0386/base.css">
+        <link rel="stylesheet" type="text/css" href="http://hbbtv1.test/_TESTSUITE/TESTS/org.hbbtv_APP2APP0386/ui.css">
+        <link rel="stylesheet" type="text/css" href="http://hbbtv1.test/_TESTSUITE/TESTS/org.hbbtv_APP2APP0386/main.css">
+
+        <script src="http://hbbtv1.test/_TESTSUITE/TESTS/org.hbbtv_APP2APP0386/main.js"></script>
+    </head>
+    <body>
+        <object type="application/oipfApplicationManager" id="app-man"></object>
+        <object type="application/hbbtvCSManager" id="cs-man"></object>
+        <object type="video/broadcast" id="broadcast"></object>
+
+        <div id="ui">
+            <div id="header">
+                <div id="logo-container">
+                    <div id="logo-container-middle" class="middle">
+                        <img
+                          id="logo"
+                          src="http://hbbtv1.test/_TESTSUITE/RES/CONTRIBUTORS/EUROFINS/eurofins-logo-212x39.png"
+                        alt="Eurofins Digital Testing" />
+                    </div>
+                </div>
+                <div id="test-id-container">
+                    <div id="test-id" class="middle">org.hbbtv_APP2APP0386 - HbbTV DIAL Application</div>
+                </div>
+            </div>
+
+            <!-- This file represents a HbbTV DIAL application launched using the HbbTV DIAL mechanism. -->
+            <h1>HbbTV DIAL Application</h1>
+            <h2>This screen represents an HbbTV DIAL application</h2>
+
+            <div id="test-title"></div>
+
+            <!-- Indicates that the web socket has been opened -->
+            <div id="socket-opened-indicator" class="indicator false">
+                WebSocket Open
+            </div>
+
+            <!-- Indicates that the web socket has been paired -->
+            <div id="socket-paired-indicator" class="indicator false">
+                WebSocket Paired
+            </div>
+        </div>
+    </body>
+</html>

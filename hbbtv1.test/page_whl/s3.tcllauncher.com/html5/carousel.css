@@ -1,0 +1,42 @@
+.carousel div {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.carousel {
+	overflow: hidden;
+}
+
+.carousel .img-ct {
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+.carousel .img-ct div {
+	display: inline-block;
+}
+
+.elemCarousel {
+	position: relative;
+	z-index: 3;
+	transform ='none';
+}
+
+.elemCarousel  span {
+	position: absolute;
+	bottom: 16px;
+	left: 0px;
+	overflow: hidden;
+	font-size: 36px;
+	font-family: 'Helvetica World';
+	color: #e0e0e0;
+	white-space: nowrap;
+	text-overflow: clip;
+	text-align: center;
+}
+
+.elemCarousel img {
+	position: absolute;
+}

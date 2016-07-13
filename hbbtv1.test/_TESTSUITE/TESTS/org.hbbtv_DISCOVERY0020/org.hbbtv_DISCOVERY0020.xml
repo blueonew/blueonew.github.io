@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testCase id="org.hbbtv_DISCOVERY0020" version="1"
+          xmlns="http://www.hbbtv.org/2012/B/testCase"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.hbbtv.org/2012/B/testCase ../../RES/testCase.xsd">
+    <originInformation>
+        <contributor part="assertion" company="HbbTV" contact="info@hbbtv.org"/>
+        <contributor part="implementation" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com" license="Commercial. Copyright Eurofins Digital Testing"/>
+    </originInformation>
+    <title>Discovery - Device description response (1)</title>
+    <appliesTo>
+        <spec name="HBBTV" version="1.3.1"/>
+    </appliesTo>
+    <specReference name="HBBTV" version="1.3.1">
+        <specSection chapter="14.7.2">
+            For terminal and service endpoint discovery, the terminal shall support DIAL [50]. [...] an HTTP GET to the URL obtained from the LOCATION: header in the M-SEARCH response. This HTTP response contains an Application-URL header and a body. The response body is a UPnP device description as required by clause 5.4 of DIAL [50].
+        </specSection>
+    </specReference>
+    <specReference name="DIAL" version="1.7">
+        <specSection chapter="5.4">
+            On receipt of a valid HTTP GET for the device description, a DIAL server SHALL respond with an HTTP response containing the UPnP device description as defined in Section 2 of [1]....If the request is successful, the HTTP response SHALL contain an additional header field, Application-URL, the value of which SHALL be an absolute HTTP URL. This URL, minus any trailing slash ("/") character, identifies the DIAL REST Service and is referred to as the DIAL REST Service URL. The host portion of the URL SHALL either resolve to an IPv4 address or be an IPv4 address.
+        </specSection>
+    </specReference>
+    <assertionText>
+        The terminal shall respond to an HTTP GET request to the URL provided in the Location header of the DIAL M-SEARCH response with a UPnP device description and an HTTP header Application-URL where the value is an absolute URL.
+    </assertionText>
+    <preconditions/>
+    <testProcedure>
+        <testStep>
+            <procedure>Call dial.doMSearch(), passing 'onDIALServerDiscovery' as callback</procedure>
+            <expectedBehaviour>Upon success, the callback function 'onDIALServerDiscovery' is called with a 'locationHeader' string containing the URL for the UPnP description of the root device</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Call dial.getDeviceDescription(), passing the 'locationHeader' as 'url' parameter, null value as 'origin' parameter and 'onGetDeviceDescription' as callback</procedure>
+            <expectedBehaviour>Upon success, the callback function 'onGetDeviceDescription' is called with 'applicationUrl', 'didRedirect' and 'allowOrigin' parameters</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Check that the returned 'applicationUrl' string is an absolute URL</procedure>
+        </testStep>
+    </testProcedure>
+    <passCriteria>
+        When an HTTP GET request was made to the Device Under Test, specified by the URL provided in the Location header of the DIAL M-SEARCH response, in order to retrieve the UPnP device description file, an HTTP Application-URL header was returned where the value is an absolute URL.
+    </passCriteria>
+    <history>
+        <historyItem name="HbbTV" date="2014-12-10" part="assertion" type="accepted"/>
+        <historyItem name="HbbTV" date="2015-08-11" part="procedure" type="submitted"/>
+    </history>
+</testCase>

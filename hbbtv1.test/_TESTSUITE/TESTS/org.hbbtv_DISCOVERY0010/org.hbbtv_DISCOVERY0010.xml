@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testCase id="org.hbbtv_DISCOVERY0010" version="1"
+          xmlns="http://www.hbbtv.org/2012/B/testCase"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.hbbtv.org/2012/B/testCase ../../RES/testCase.xsd">
+    <originInformation>
+        <contributor part="assertion" company="HbbTV" contact="info@hbbtv.org"/>
+        <contributor part="procedure" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com"/>
+        <contributor part="implementation" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com" license="Commercial. Copyright Eurofins Digital Testing"/>
+    </originInformation>
+    <title>Discovery - MSearch response</title>
+    <appliesTo>
+        <spec name="HBBTV" version="1.3.1"/>
+    </appliesTo>
+    <specReference name="HBBTV" version="1.3.1">
+        <specSection chapter="14.7.2">
+            For terminal and service endpoint discovery, the terminal shall support DIAL [50]. [...] Before the HbbTV service endpoints can be determined, the DIAL REST Service and the DIAL Application Resource URL need to be found. This is achieved using the mechanisms described in DIAL [50] clause 5. This consists of an SSDP M-SEARCH request and response
+        </specSection>
+    </specReference>
+    <specReference name="DIAL" version="1.7">
+        <specSection chapter="5.1">
+            A DIAL client that wishes to discover DIAL servers SHALL send an MSEARCH request as defined in Section 1.3.2 of [1] over UDP to the IPv4 multicast address 239.255.255.250 and UDP port 1900 including the Search Target header (ST) with the following value defined by this specification: urn:dial-multiscreen-org:service:dial:1
+        </specSection>
+        <specSection chapter="5.2">
+            An SSDP/UPnP server receiving an M-SEARCH request with the Search Target defined above shall respond as defined in Section 1.3.3 of [1], including a LOCATION header containing an absolute HTTP URL for the UPnP description of the root device. The host portion of the URL SHALL either resolve to an IPv4 address or be an IPv4 address. The Search Target header (ST) of the response SHALL contain the identifier defined in Section 5.1.
+        </specSection>
+    </specReference>
+    <assertionText>
+        The terminal shall respond to a M-SEARCH request as defined in clause 5.1 of DIAL where the ST header (Search Target) contains "urn:dial-multiscreen-org:service:dial:1" as the identifier with an M-SEARCH response as defined in clause 5.2 of DIAL, including a HTTP "Location" header containing an absolute HTTP URL where the host portion of the URL shall either resolve to an IPv4 address or be an IPv4 address.
+    </assertionText>
+    <preconditions/>
+    <testProcedure>
+        <testStep>
+            <procedure>Call dial.doMSearch() with 'onDIALServerDiscovery' callback function name</procedure>
+            <expectedBehaviour>Upon success, the callback function 'onDIALServerDiscovery' is called with a 'locationHeader' string containing the URL for the UPnP description of the root device</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Check that the returned 'locationHeader' string, containing the URL for the UPnP description of the root device, is an absolute URL</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Call dial.resolveIpV4Address() passing in the hostname part of the 'locationHeader' HTTP URL string and 'onResolveIPV4Address' callback function name</procedure>
+            <expectedBehaviour>Upon success, the callback function 'onResolveIPV4Address' is called with a 'dottedIpv4' string</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Check that the returned 'dottedIpv4' string is not null and corresponds to a valid IPv4 address format</procedure>
+        </testStep>
+    </testProcedure>
+    <passCriteria>
+        When a M-SEARCH request was made which discovered the DIAL server on the Device Under Test, a HTTP Location header was returned which contained an absolute HTTP URL where the host portion of the URL was an IPv4 address or resolved to an IPv4 address.
+    </passCriteria>
+    <history>
+        <historyItem name="HbbTV" date="2014-12-10" part="assertion" type="accepted"/>
+        <historyItem name="HbbTV" date="2015-08-06" part="procedure" type="submitted"/>
+        <historyItem name="HbbTV" date="2015-08-15" part="implementation" type="submitted"/>
+    </history>
+</testCase>

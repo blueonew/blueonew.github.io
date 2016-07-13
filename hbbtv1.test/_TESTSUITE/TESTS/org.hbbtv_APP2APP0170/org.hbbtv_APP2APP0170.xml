@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testCase id="org.hbbtv_APP2APP0170" version="1"
+          xmlns="http://www.hbbtv.org/2012/B/testCase"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.hbbtv.org/2012/B/testCase ../../RES/testCase.xsd">
+    <originInformation>
+        <contributor part="assertion" company="HbbTV" contact="info@hbbtv.org"/>
+        <contributor part="procedure" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com"/>
+        <contributor part="implementation" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com" license="Commercial. Copyright Eurofins Digital Testing"/>
+    </originInformation>
+    <title>App2App - Ignore origin header</title>
+    <appliesTo>
+        <spec name="HBBTV" version="1.3.1"/>
+    </appliesTo>
+    <specReference name="HBBTV" version="1.3.1">
+        <specSection chapter="14.5.3">
+            The terminal shall Ignore any Origin header in the request handshake sent by the client.
+        </specSection>
+        <specSection chapter="14.5.4">
+            The WebSocket URL that a client connects to when using either service end-point is formed by concatenating the base WebSocket URL for that service end-point with an application specific suffix.
+        </specSection>
+    </specReference>
+    <assertionText>
+        When a companion screen application connects to the URL consisting of the URL of the app2app service endpoint suffixed with the application specific suffix string "myapp.mychannel.org" and includes an Origin header in the request handshake, the terminal accepts the request and establishes a WebSocket connection with the client.
+    </assertionText>
+    <preconditions/>
+    <testProcedure>
+        <testStep>
+            <procedure>Create a reference to the HbbTVCSManager embedded object</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Obtain the remote app2app URL from the HbbTVCSManager instance by calling 'getApp2AppRemoteBaseURL'</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Attempt to open the remote app2app web socket by calling the 'openWebsocket' method, passing in a 'url' parameter which is compopsed of the app2app remote base URL and the app endpoint string "myapp.mychannel.org", and "http://xyz.example.com" as the 'originHeader' parameter</procedure>
+            <expectedBehaviour>The 'onConnect' callback for the remote web socket is called</expectedBehaviour>
+        </testStep>
+    </testProcedure>
+    <passCriteria>
+        When a companion screen application attempted to connect to the app endpoint URL, consisting of the URL of the app2app service endpoint concatenated with the application specific suffix string "myapp.mychannel.org", and including an Origin header in the request handshake, the terminal accepted the request and established a WebSocket connection with the client.
+    </passCriteria>
+    <history>
+        <historyItem name="HbbTV" date="2014-12-11" part="assertion" type="accepted"/>
+        <historyItem name="HbbTV" date="2015-09-04" part="procedure" type="submitted"/>
+        <historyItem name="HbbTV" date="2015-11-25" part="implementation" type="submitted"/>
+    </history>
+</testCase>

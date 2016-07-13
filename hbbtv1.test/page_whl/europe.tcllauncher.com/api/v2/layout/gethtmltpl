@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <link rel="stylesheet" type="text/css" href="http://s3.tcllauncher.com/html5/theme/theme_thomson.css"> 
+  <link rel="stylesheet" type="text/css" href="http://s3.tcllauncher.com/html5/index.css"> 
+  <style type="text/css">
+body
+{
+    margin:0px;
+    width:1920px;
+    height:1080px;
+    display:none;
+}
+</style> 
+  <script type="text/javascript" src="http://s3.tcllauncher.com/html5/generalFun.js"></script> 
+  <script>
+
+//index的标题翻译
+var titlePageWords = [top.titlePageWords[0],top.titlePageWords[1],top.titlePageWords[2],top.titlePageWords[3]];
+//staus的标题翻译
+var statusPageWords = [top.statusPageWords[0],top.statusPageWords[1],top.statusPageWords[2],top.statusPageWords[3]];
+
+var isCache = 0;
+var current_url = location.search;
+if (current_url.indexOf("go=preloadcache") != -1)
+{
+    isCache = 1;
+}
+</script> 
+ </head> 
+ <body onload="init()" onunload="uninit()" onfocus="onBodyFocus()" oncontextmenu="return false" ondragstart="return false" onselectstart="return false" onbeforecopy="return false"> 
+  <div id="iframeDiv"> 
+   <iframe id="homePage13249" name="homePage13249" class="myIframe" frameborder="0" marginheight="0" marginwidth="0" src="./gethtmltab?tplid=5767&amp;tab_id=13249&amp;resolution=1080&amp;client_type=THOM-EU-MT56-S2&amp;launcher_id=2b1aa81ad3af469593807cbf05085caf&amp;dnum=&amp;language=en&amp;zone=gb&amp;mac=00:0c:e7:06:00:00&amp;sys_version=V8-T56FS01-LF1V250">Home</iframe>
+   <iframe id="homePage13250" name="homePage13250" class="myIframe" frameborder="0" marginheight="0" marginwidth="0" src="./gethtmltab?tplid=5767&amp;tab_id=13250&amp;resolution=1080&amp;client_type=THOM-EU-MT56-S2&amp;launcher_id=2b1aa81ad3af469593807cbf05085caf&amp;dnum=&amp;language=en&amp;zone=gb&amp;mac=00:0c:e7:06:00:00&amp;sys_version=V8-T56FS01-LF1V250">Videos</iframe>
+   <iframe id="homePage13251" name="homePage13251" class="myIframe" frameborder="0" marginheight="0" marginwidth="0" src="./gethtmltab?tplid=5767&amp;tab_id=13251&amp;resolution=1080&amp;client_type=THOM-EU-MT56-S2&amp;launcher_id=2b1aa81ad3af469593807cbf05085caf&amp;dnum=&amp;language=en&amp;zone=gb&amp;mac=00:0c:e7:06:00:00&amp;sys_version=V8-T56FS01-LF1V250">TV</iframe>
+   <iframe id="homePage17421" name="homePage17421" class="myIframe" frameborder="0" marginheight="0" marginwidth="0" src="./gethtmltab?tplid=5767&amp;tab_id=17421&amp;resolution=1080&amp;client_type=THOM-EU-MT56-S2&amp;launcher_id=2b1aa81ad3af469593807cbf05085caf&amp;dnum=&amp;language=en&amp;zone=gb&amp;mac=00:0c:e7:06:00:00&amp;sys_version=V8-T56FS01-LF1V250">Sports</iframe>
+   <iframe id="homePage13252" name="homePage13252" class="myIframe" frameborder="0" marginheight="0" marginwidth="0" src="./gethtmltab?tplid=5767&amp;tab_id=13252&amp;resolution=1080&amp;client_type=THOM-EU-MT56-S2&amp;launcher_id=2b1aa81ad3af469593807cbf05085caf&amp;dnum=&amp;language=en&amp;zone=gb&amp;mac=00:0c:e7:06:00:00&amp;sys_version=V8-T56FS01-LF1V250">Apps</iframe>
+  </div> 
+  <div id="infoStatusSetting" style="display: none"> 
+   <!--用来显示设置信息--> 
+   <div id="usb_Setting" onclick="jumpToMedia(); changeFocus( 'usb_Setting' )" class="topButton_Setting"> 
+    <img src="http://s3.tcllauncher.com/html5/images/USB_state.png?md5=b06c2ccd2368a47c37d88de01558af17"> 
+    <span class="topTitleText">USB</span> 
+   </div> 
+   <div id="spreadOne"></div> 
+   <div id="settings_Setting" onclick="jumpToSetting(); changeFocus( 'settings_Setting' )" class="topButton_Setting"> 
+    <img src="http://s3.tcllauncher.com/html5/images/Settings.png?md5=4472ab0b5e8268ff7710f9d8435e2647"> 
+    <span class="topTitleText">Settings</span> 
+   </div> 
+   <div id="spreadTwo"></div> 
+   <div id="TCL-WIFI_Setting" onclick="jumpToNetwork(); changeFocus( 'TCL-WIFI_Setting' )" class="topButton_Setting"> 
+    <img src="http://s3.tcllauncher.com/html5/images/WiFi.png?md5=a7d2ddb6060662e3d41f6d9426f37550"> 
+    <span class="topTitleText">TCL-WIFI</span> 
+   </div> 
+  </div> 
+  <div id="infoStatus" style="display: block"> 
+   <!--用来显示一些消息 网络连接状态时间等信息--> 
+   <img id="usb" src="http://s3.tcllauncher.com/html5/images/USB_2.png?md5=346a9bb29685a49de64172980189b679" style="display:none"> 
+   <img id="network" src="http://s3.tcllauncher.com/html5/images/WiFinone.png?md5=699c3f5aa77d13d320c0875cf910a0b6"> 
+   <span id="date"></span> 
+   <span id="time"></span> 
+  </div> 
+  <div id="title"> 
+   <span id="13249" class="titleSpan" data-id="13249" data-sourcefrom="6" data-ids="5767_13249_0_0" data-focus="1">Home</span>
+   <span id="13250" class="titleSpan" data-id="13250" data-sourcefrom="6" data-ids="5767_13250_0_0" data-focus="0">Videos</span>
+   <span id="13251" class="titleSpan" data-id="13251" data-sourcefrom="6" data-ids="5767_13251_0_0" data-focus="0">TV</span>
+   <span id="17421" class="titleSpan" data-id="17421" data-sourcefrom="6" data-ids="5767_17421_0_0" data-focus="0">Sports</span>
+   <span id="13252" class="titleSpan" data-id="13252" data-sourcefrom="6" data-ids="5767_13252_0_0" data-focus="0">Apps</span>
+   <div id="mainFocus" style="visibility: hidden;"> 
+   </div> 
+  </div> 
+  <!--  上标题部分被选中时的遮罩效果 --> 
+  <div id="opacityBg"></div> 
+  <span id="span_scaleplate" style="visibility:hidden;"></span> 
+  <input id="commonDataSource" type="hidden" data-tmp_id="5767"> 
+  <script>
+        
+    var timeTimer = 0;
+
+    function updateTime()
+    {
+        document.getElementById("date").innerText = tcl.setting.currentDate.replace(/-/g, "/");
+        document.getElementById("time").innerText = tcl.setting.currentTime.substring(0, 5);
+        clearInterval(timeTimer);
+        timeTimer = setInterval(function (){
+                document.getElementById("date").innerText = tcl.setting.currentDate.replace(/-/g, "/");
+                document.getElementById('time').innerText = tcl.setting.currentTime.substring(0, 5);
+        }, 60*1000);
+    }
+    function updateUSB()
+    {
+        if (tcl.media.deviceStatus())
+        {
+            document.getElementById("usb").style.display = "block";
+            document.getElementById("usb_Setting").style.display = "inline";
+            document.getElementById("spreadOne").style.display = "block";
+        }
+        else
+        {
+            document.getElementById("usb").style.display = "none";
+            document.getElementById("usb_Setting").style.display = "none";
+            document.getElementById("spreadOne").style.display = "none";
+        }
+    }
+    function updateNetwork()
+    {
+        var nets = document.getElementById("TCL-WIFI_Setting");
+        if (top.checkNetStatus())
+        {
+            if (tcl.setting.networkConnectType == 2)
+            {
+                document.getElementById("network").src = "http://s3.tcllauncher.com/html5/images/WiFiall.png?md5=e7ce23790b2bc9e8e907b53032d1d3cf";
+                nets.getElementsByTagName("img")[0].src = "http://s3.tcllauncher.com/html5/images/WiFiall.png?md5=e7ce23790b2bc9e8e907b53032d1d3cf";
+                nets.getElementsByTagName("span")[0].innerText = tcl.setting.netSSID;
+            }
+            else
+            {
+                document.getElementById("network").src = "http://s3.tcllauncher.com/html5/images/wired-1.png?md5=5a50dffafc349485420ed645a1f3164a";
+                nets.getElementsByTagName("img")[0].src = "http://s3.tcllauncher.com/html5/images/wired-1.png?md5=5a50dffafc349485420ed645a1f3164a";
+                nets.getElementsByTagName("span")[0].innerText = statusPageWords[3];/* "Wired"; */
+            }
+        }
+        else
+        {
+            if (tcl.setting.networkConnectType == 2)
+            {
+                document.getElementById("network").src = "http://s3.tcllauncher.com/html5/images/wifi-off.png?md5=8e72c7862d66689bc975f039ec3e43c2";
+                nets.getElementsByTagName("img")[0].src = "http://s3.tcllauncher.com/html5/images/wifi-off.png?md5=8e72c7862d66689bc975f039ec3e43c2";
+                nets.getElementsByTagName("span")[0].innerText = statusPageWords[2];/* WIFI"; */
+            }
+            else
+            {
+                document.getElementById("network").src = "http://s3.tcllauncher.com/html5/images/wired-2.png?md5=73f7012b0d0df2755c2586a1727ed50d";
+                nets.getElementsByTagName("img")[0].src = "http://s3.tcllauncher.com/html5/images/wired-2.png?md5=73f7012b0d0df2755c2586a1727ed50d";
+                nets.getElementsByTagName("span")[0].innerText = statusPageWords[3];/* "Wired"; */
+            }
+        }
+    }
+        
+    if (!isCache)
+    {
+        updateTime();
+        updateUSB();
+        updateNetwork();
+    }  
+    
+    initSpanForService();
+    //给本地的Home、Videos、TV、Apps、状态栏 增加翻译，给服务器时注释掉
+    function initSpanForLocation()
+    {
+    	//["Home", "Videos","TV","Apps"]
+    	var needTranslateSpans = document.getElementsByClassName("titleSpan");
+    	for(var i = 0; i < needTranslateSpans.length; i++)
+    	{
+    		needTranslateSpans[i].innerHTML = titlePageWords[i];
+    		
+    	}
+
+    	//["USB","Settings","WIFI","Wired"]
+    	var needTranslateSpans = document.getElementsByClassName("topTitleText");
+    	for(var i = 0; i < needTranslateSpans.length-1; i++)//只给2个赋值，第三个在html赋值的
+    	{
+    		needTranslateSpans[i].innerHTML = statusPageWords[i];
+    	}
+    }
+
+    //给服务器时的翻译逻辑，只有状态栏的翻译
+    function initSpanForService()
+    {
+    	//["USB","Settings","WIFI","Wired"]
+    	var needTranslateSpans = document.getElementsByClassName("topTitleText");
+    	for(var i = 0; i < needTranslateSpans.length-1; i++)//只给2个赋值，第三个在html赋值的
+    	{
+    		needTranslateSpans[i].innerHTML = statusPageWords[i];
+    	}
+    }
+    </script> 
+  <script type="text/javascript" src="http://s3.tcllauncher.com/html5/reportData.js"></script> 
+  <script type="text/javascript" src="http://s3.tcllauncher.com/html5/index.js"></script> 
+  <script type="text/javascript" src="http://s3.tcllauncher.com/html5/event.js"></script>  
+  <!-- tclLauncherUpdateDate 20160412 -->  
+ </body>
+</html>

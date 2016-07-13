@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<playoutsetDefinition xmlns="http://www.hbbtv.org/2010/testing">
+  <transportStream file="../../RES/BROADCAST/TS/generic-HbbTV-Teststream.ts" bitrate="5000000">
+    <pid src="0" dst="0" description="PAT" />
+    <pid src="200" dst="200" description="PMT/S11" />
+    <pid src="400" dst="400" description="PMT/S13" />
+    <pid src="17" dst="17" description="SDT" />
+    <pid src="18" dst="18" description="EIT P/F" />
+    <pid src="20" dst="20" description="TDT/TOT" />
+    <pid src="100" dst="100" description="PMT/S10" />
+    <pid src="101" dst="101" description="VES" />
+    <pid src="102" dst="102" description="AES" />
+    <pid src="300" dst="300" description="PMT/S12" />
+    <pid src="500" dst="500" description="PMT/S14" />
+  </transportStream>
+  <generatedData>
+    <ait pid="205" src="org.hbbtv_APP2APP0395.ait.xml" />
+  </generatedData>
+  <time>
+    <synchronizeTotTdt />
+  </time>
+  <networkConnection available="YES" />
+</playoutsetDefinition>

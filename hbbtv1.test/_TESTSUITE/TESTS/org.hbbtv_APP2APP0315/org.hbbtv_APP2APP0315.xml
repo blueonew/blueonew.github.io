@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testCase id="org.hbbtv_APP2APP0315" version="1"
+          xmlns="http://www.hbbtv.org/2012/B/testCase"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.hbbtv.org/2012/B/testCase ../../RES/testCase.xsd">
+    <originInformation>
+        <contributor part="assertion" company="HbbTV" contact="info@hbbtv.org"/>
+        <contributor part="procedure" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com"/>
+        <contributor part="implementation" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com" license="Commercial. Copyright Eurofins Digital Testing"/>
+    </originInformation>
+    <title>App2App - Discard data frames of local client in waiting state</title>
+    <appliesTo>
+        <spec name="HBBTV" version="1.3.1"/>
+    </appliesTo>
+    <specReference name="HBBTV" version="1.3.1">
+        <specSection chapter="14.5.5">
+            When connections from two clients enter into a state of being paired to each other, the terminal shall immediately inform both clients by sending them a Data frame of type Text (as defined by the WebSocket protocol specification clause 5.6 [40]) with as Payload data the UTF-8 encoded text 'pairingcompleted'. The connections are now both considered to be open, and the clients to be paired. Once paired and connections to both clients are open, the terminal shall act as a relay to pass messages between them, providing, in effect, a full-duplex bi-directional communication stream. When either client sends a WebSocket message, consisting of one or more protocol frames, the terminal, upon receipt of each frames, shall immediately relay its contents to the other client via the corresponding WebSocket connection and maintaining the same payload type. The terminal shall discard any data frames received from a client before it has informed that client of successful pairing and shall relay all data frames thereafter. Additionally the terminal shall inform a client of successful pairing before sending it relayed data frames.
+        </specSection>
+    </specReference>
+    <assertionText>
+        When an HbbTV application connects to the local app2app service endpoint and immediately sends a message after the connection has been established and after the application has sent the message a companion screen application connects to the remote endpoint using the same app-endpoint as the HbbTV application, the terminal shall pair the two connections and send the "pairingcompleted" message to the both clients but shall not relay the message initially sent by the HbbTV application to the companion screen application.
+    </assertionText>
+    <preconditions/>
+    <testProcedure>
+        <testStep>
+            <procedure>Create a reference to the HbbTVCSManager embedded object</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Obtain the local app2app URL from the HbbTVCSManager instance by calling getApp2AppLocalBaseURL()</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Obtain the remote app2app URL from the HbbTVCSManager instance by calling getApp2AppRemoteBaseURL()</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Attempt to open the local App2App web socket by creating a new WebSocket object using 'new WebSocket(url)', using the App2App local base URL retrieved concatenated with the application endpoint string "myapp.mychannel.org" as the 'url' parameter</procedure>
+            <expectedBehaviour>The 'onopen' callback for the local web socket is called</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Send a text message on the local web socket by calling send() on the local App2App web socket opened using "not-to-be-relayed" string as the 'data' parameter</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Attempt to open the remote App2App web socket, by calling 'testAPI.openWebSocket(url)' using the App2App remote base URL retrieved concatenated with the application endpoint string "myapp.mychannel.org" as the 'url' parameter</procedure>
+            <expectedBehaviour>The 'onConnect' callback for the remote web socket is called and both the local and the second remote web sockets receive a "pairingcompleted" message through the onmessage() and onMessage() callbacks respectively.</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Wait for 10 seconds to ensure no further messages are received</procedure>
+            <expectedBehaviour>The message "not-to-be-relayed" should not be received by the remote web socket endpoint</expectedBehaviour>
+        </testStep>
+    </testProcedure>
+    <passCriteria>
+        The HbbTV application connected to the local app2app service endpoint and immediately sent a message. A companion screen application connected to the same app-endpoint as the HbbTV application, the terminal paired the two connections and sent the 'pairingcompleted' message to both clients, but did not relay the message opriginal sent by the HbbTV application.
+    </passCriteria>
+    <history>
+        <historyItem name="HbbTV" date="2014-12-11" part="assertion" type="accepted"/>
+        <historyItem name="HbbTV" date="2015-09-07" part="procedure" type="submitted"/>
+        <historyItem name="HbbTV" date="2015-11-25" part="implementation" type="submitted"/>
+    </history>
+</testCase>

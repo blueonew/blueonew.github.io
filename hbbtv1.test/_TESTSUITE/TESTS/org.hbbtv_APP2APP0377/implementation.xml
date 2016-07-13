@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testImplementation id="org.hbbtv_APP2APP0377" xmlns="http://www.hbbtv.org/2012/testImplementation">
+    <playoutSets>
+        <playoutSet id="1" definition="org.hbbtv_APP2APP0377.playout.xml"/>
+    </playoutSets>
+    <companionScreen type="any" initiallyConnected="false" />
+</testImplementation>

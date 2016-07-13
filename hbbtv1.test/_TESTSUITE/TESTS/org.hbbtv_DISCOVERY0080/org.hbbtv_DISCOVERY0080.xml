@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testCase id="org.hbbtv_DISCOVERY0080" version="1"
+          xmlns="http://www.hbbtv.org/2012/B/testCase"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.hbbtv.org/2012/B/testCase ../../RES/testCase.xsd">
+    <originInformation>
+        <contributor part="assertion" company="HbbTV" contact="info@hbbtv.org"/>
+        <contributor part="procedure" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com"/>
+        <contributor part="implementation" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com" license="Commercial. Copyright Eurofins Digital Testing"/>
+    </originInformation>
+    <title>Discovery - Cross Origin request</title>
+    <appliesTo>
+        <spec name="HBBTV" version="1.3.1"/>
+    </appliesTo>
+    <specReference name="HBBTV" version="1.3.1">
+        <specSection chapter="14.8">
+            The HbbTV terminal shall allow cross-origin requests to the HbbTV UPnP device description (for the DIAL service) and the DIAL REST Service. It shall do this by implementing the resource processing model defined in the W3C Cross-Origin Resource Sharing recommendation [42] and authorising all HTTP requests made by a CS application or an HbbTV application on another terminal to come from any origin. Specifically, when the HbbTV terminal receives an HTTP request with request URL targeting the UPnP device description or the DIAL REST Service: If the request contains an Origin header, then the HbbTV terminal shall include an Access-Control-Allow-Origin header in the HTTP response. The value of this response header shall be either the asterisk character "*" or a case-sensitive match for the value of the Origin header from the HTTP request.
+        </specSection>
+    </specReference>
+    <specReference name="CORS" version="W3C Recommendation 16 January 2014">
+        <specSection chapter="5.1">
+            The Access-Control-Allow-Origin header indicates whether a resource can be shared based by returning the value of the Origin request header, "*", or "null" in the response.
+        </specSection>
+    </specReference>
+    <assertionText>
+        When a client is requesting the DIAL XML document using CORS, i.e. including an HTTP Origin header, the terminal shall include HTTP headers as defined in CORS, i.e. the Access-Control-Allow-Origin header shall be present and either contain the asterik character "*" or a case-sensitive match for the value of the Origin header from the HTTP request.
+    </assertionText>
+    <preconditions/>
+    <testProcedure>
+        <testStep>
+            <procedure>Call 'dial.doMSearch()', passing an 'onDIALServerDiscovery' callback function</procedure>
+        </testStep>
+        <testStep>
+            <procedure>'onDIALServerDiscovery' callback function is called with 'locationHeader' string</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Call 'dial.getDeviceDescription()', passing the 'locationHeader' as the 'url' parameter, 'http://xyz.example.com' as 'origin', and the 'onGetDeviceDescription' function as the 'callback' parameter</procedure>
+        </testStep>
+        <testStep>
+            <procedure>The 'onGetDeviceDescription' callback is called with the resulting 'applicationUrl', 'didRedirect, and 'allowOrigin' parameters. 'allowOrigin' must be either '*' or a case-sensitive match for the 'origin' parameter from the call to 'dial.getDeviceDescription()' (i.e. 'http://xyz.example.com')</procedure>
+        </testStep>
+    </testProcedure>
+    <passCriteria>
+        When a client requested the DIAL XML document using CORS, i.e. including an HTTP Origin header, the response headers contained an "Access-Control-Allow-Origin" header with a value of "*" or a case-sensitive match for the value of the Origin header from the HTTP request.
+    </passCriteria>
+    <history>
+        <historyItem name="HbbTV" date="2014-11-27" part="assertion" type="accepted"/>
+        <historyItem name="HbbTV" date="2015-08-06" part="procedure" type="submitted"/>
+        <historyItem name="HbbTV" date="2015-08-12" part="implementation" type="submitted"/>
+    </history>
+    <remarks>
+        The 'origin' parameter in the getDeviceDescription() call will be set to 'http://xyz.example.com'
+    </remarks>
+</testCase>

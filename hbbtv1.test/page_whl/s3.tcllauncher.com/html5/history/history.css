@@ -1,0 +1,187 @@
+.date
+{
+position:absolute;
+z-index:6;
+display:inline;
+font-size:40px;
+font-family:'Helvetica World';
+color:#9a9999;
+white-space:nowrap;
+text-overflow:ellipsis;
+text-align:right;
+top:0px;
+left:0px;
+width:341px;
+}
+
+.sliderDiv
+{
+position:absolute;
+z-index:6;
+display:block;
+top:0px;
+left:369px;
+}
+
+.picDiv
+{
+position:relative;
+top:28px;
+left:465px;
+height:280px;
+width:900px;
+overflow:hidden;
+}
+
+.itemDiv
+{
+	position:absolute;
+	top:0px;
+	left:20px;
+	height:400px;
+	width:0px;
+	margin:none;
+	outline:none;
+	
+}
+
+
+.posterPic
+{
+	position:absolute;
+	top:18px;
+	left:20px;
+	height:330px;
+	width:330px;
+	background-size:330px 330px;
+}
+
+.defaultPic
+{
+	position:absolute;
+	top:18px;
+	left:20px;
+	height:330px;
+	width:330px;
+	background-size:640px 480px;
+	background-position:-150px -50px;
+	
+
+}
+
+
+.delImgItem
+{
+	position:absolute;
+	left:298px;
+	top:18px;
+	display:none;
+	z-index:1;
+	
+}
+
+
+
+.videoTitle
+{ 
+	position:relative;
+	top:353px;
+	width:320px;
+	left:25px;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow: hidden;
+	height:50px;
+	color:white;
+	position:absolute;
+	font-size:36px;
+	font-weight:80;
+	font-family:Arial;
+	text-align:center;	 
+}
+
+.historyLocation
+{
+	position:absolute;
+	left:390px;
+	height:400px;
+	width:1415px;
+	overflow:hidden;
+}
+
+.historyAll
+{
+	position:absolute;
+	width:1920px;
+	height:400px;
+	
+}
+
+.delPageType
+{
+	
+	position:absolute;
+	width:1920px;
+	height:1080px;
+	display:none;
+
+	
+}
+.includeWhole
+{
+	
+	position:absolute;
+	top:0px;
+	width:1920px;
+	height:1080px;
+}
+
+#progressBar
+{
+	top:310px;
+	width:320px;
+	height:16px;
+	left:11px;
+	position:absolute;
+}
+
+#progressBarBackground
+{
+	top:310px;
+	width:320px;
+	height:16px;
+	left:15px;
+	position:absolute;
+}
+
+.delOneCss
+{
+	position:absolute;
+	display:inline;
+	z-index:201;
+	left:640px;
+	top:10px;
+	width:240px;
+	text-align:center;
+	line-height:94px;
+	height:94px;
+	font-size:36px;
+	background-image:url('http://s3.tcllauncher.com/html5/images/unCheckedButton.png?md5=01a81ce104f0ceeba71f744e300a8fe9');
+	color:#ffffff;
+}
+
+.delALLCss
+{
+	position:absolute;
+	display:inline;
+	z-index:201;
+	left:1040px;
+	top:10px;
+	width:240px;
+	text-align:center;
+	line-height:94px;
+	height:94px;
+	font-size:36px;
+	background-image:url('http://s3.tcllauncher.com/html5/images/unCheckedButton.png?md5=01a81ce104f0ceeba71f744e300a8fe9'); 
+	color:#aaaaaa;
+}

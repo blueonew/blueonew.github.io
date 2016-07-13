@@ -1,0 +1,10 @@
+/* Margins and padding */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#app-man {
+    visibility: hidden;
+}

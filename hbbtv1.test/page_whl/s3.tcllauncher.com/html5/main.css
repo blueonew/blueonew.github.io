@@ -1,0 +1,30 @@
+
+
+.appicon
+{
+    position:absolute;
+    background:url(http://s3.tcllauncher.com/html5/images/APP_bg.png?md5=606d3cca9424a58a1ea63f54eb8523d5) no-repeat;
+    height:281px;
+    width:281px;
+}
+
+.appicon img
+{
+    position: absolute;
+    
+}
+
+.appicon span
+{
+    position: absolute;
+    bottom: 36px;
+    left: 0px;
+    width:281px;
+    overflow: hidden;
+    font-size: 36px;
+    font-family: 'Helvetica World';
+    color: #e0e0e0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+}

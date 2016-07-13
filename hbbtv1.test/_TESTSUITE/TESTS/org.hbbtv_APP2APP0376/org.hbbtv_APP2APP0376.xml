@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testCase id="org.hbbtv_APP2APP0376" version="1"
+          xmlns="http://www.hbbtv.org/2012/B/testCase"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.hbbtv.org/2012/B/testCase ../../RES/testCase.xsd">
+    <originInformation>
+        <contributor part="assertion" company="HbbTV" contact="info@hbbtv.org"/>
+        <contributor part="procedure" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com"/>
+        <contributor part="implementation" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com" license="Commercial. Copyright Eurofins Digital Testing"/>
+    </originInformation>
+    <title>App2App - 10 pairings - 5 large messages per pairing in 10 sec to remote end-point</title>
+    <appliesTo>
+        <spec name="HBBTV" version="1.3.1"/>
+    </appliesTo>
+    <specReference name="HBBTV" version="1.3.1">
+        <specSection chapter="14.5.5">
+            When either client sends a WebSocket message, consisting of one or more protocol frames, the terminal, upon receipt of each frame, shall immediately relay its contents to the other client via the corresponding WebSocket connection and maintaining the same payload type. [...] When messages sent by all clients across all currently paired connections are considered in aggregate then, during a 10 second period, the terminal shall be able to relay any of the following rates of traffic when spread evenly across up to 10 paired connections: [...] * 50 unfragmented messages with a payload size of up to and including 131 072 bytes sent by the client connected to the remote service end-point (5 frames via each paired connection).
+        </specSection>
+    </specReference>
+    <assertionText>
+        When a HbbTV application has 10 paired connections with 10 companion screen applications, and each companion screen application sends a text message with a size of 131 072 bytes every 2 seconds over a period of 60 seconds the terminal immediately relays the text message to the HbbTV application via the corresponding connection.
+    </assertionText>
+    <preconditions/>
+    <testProcedure>
+        <testStep>
+            <procedure>Create a reference to the HbbTVCSManager embedded object</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Obtain the local app2app URL from the HbbTVCSManager instance by calling getApp2AppLocalBaseURL()</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Obtain the remote app2app URL from the HbbTVCSManager instance by calling getApp2AppRemoteBaseURL()</procedure>
+        </testStep>
+        <testStep>
+            <procedure>Attempt to open 10 local app2app Websocket using the app2app local base URL and the app end-point</procedure>
+            <expectedBehaviour>The 'onopen' event is fired for the local Websocket</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Attempt to open 10 remote app2app Websockets</procedure>
+            <expectedBehaviour>The onOpen callback for each Websocket is called</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Wait for 'pairingcompleted' message to be received on the local Websocket</procedure>
+            <expectedBehaviour>The 'pairingcompleted' message is received once on each local Websocket</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Wait for 'pairingcompleted' message to be received on all of the remote Websockets</procedure>
+            <expectedBehaviour>The 'pairingcompleted' message is received once on each remote Websocket</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Send a 131,072 byte message on each of the remote sockets, every 2 seconds for 60 seconds</procedure>
+            <expectedBehaviour>The messages should be received on the corresponding paired local Websockets</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Check that the messages received on the local Websockets exactly match the messages sent from the corresponding paired remote Websockets</procedure>
+            <expectedBehaviour>The recevied messages exactly match the sent messages</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>Check that the total number of messages received on the local websockets matches the number of messages sent from the remote Websockets</procedure>
+            <expectedBehaviour>The total number of messages sent matches the total number of messages received</expectedBehaviour>
+        </testStep>
+    </testProcedure>
+    <passCriteria>
+        A HbbTV application with 10 paired connections to 10 companion screen devices correctly received all messages sent to it by the companion screen devices via their corresponding connections. Each companion screen application sent a text message with a size of 131 072 bytes every 2 seconds over a period of 60 seconds.
+    </passCriteria>
+    <history>
+        <historyItem name="HbbTV" date="2014-12-11" part="assertion" type="accepted"/>
+        <historyItem name="HbbTV" date="2015-09-01" part="procedure" type="submitted"/>
+        <historyItem name="HbbTV" date="2015-11-25" part="implementation" type="submitted"/>
+    </history>
+</testCase>

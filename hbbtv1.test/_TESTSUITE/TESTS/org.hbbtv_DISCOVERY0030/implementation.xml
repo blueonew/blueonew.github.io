@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testImplementation id="org.hbbtv_DISCOVERY0030" xmlns="http://www.hbbtv.org/2012/testImplementation">
+    <playoutSets>
+       <playoutSet id="1" definition="org.hbbtv_DISCOVERY0030.playout.xml" />
+    </playoutSets>
+    <harnessTestCode definition="harness_test_code.js" />
+</testImplementation>

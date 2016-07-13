@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testCase id="org.hbbtv_APP2APP0386" version="1"
+          xmlns="http://www.hbbtv.org/2012/B/testCase"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.hbbtv.org/2012/B/testCase ../../RES/testCase.xsd">
+    <originInformation>
+        <contributor part="assertion" company="HbbTV" contact="info@hbbtv.org"/>
+        <contributor part="procedure" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com"/>
+        <contributor part="implementation" company="Eurofins Digital Testing" contact="DigitalTesting@eurofins.com" license="Commercial. Copyright Eurofins Digital Testing"/>
+    </originInformation>
+    <title>App2App - Application disconnects paired connection: Application stopped by terminal</title>
+    <appliesTo>
+        <spec name="HBBTV" version="1.3.1"/>
+    </appliesTo>
+    <specReference name="HBBTV" version="1.3.1">
+        <specSection chapter="14.5.5">
+            If the application closes the WebSocket connection to the local service endpoint then the terminal shall commence the process of disconnecting the corresponding paired connection from the remote other client by sending a corresponding Close frame as defined in RFC 6455 [40]. If the application is stopped and WebSocket connections are still open, then any WebSocket connections to the WebSocket server shall be closed in an undefined manner.
+        </specSection>
+    </specReference>
+    <assertionText>
+        When an application that has a paired connection to the local app2app service end-point is stopped by the terminal due to a channel change, the terminal closes the connection to the client connected to the remote end-point.
+    </assertionText>
+    <preconditions>
+        <optionalFeatures>+RLAUNCH_PREAPPROVAL</optionalFeatures>
+    </preconditions>
+    <testProcedure>
+        <testStep>
+            <procedure>In the harness test code, call dial.doMSearch(), passing a callback function argument</procedure>
+            <expectedBehaviour>The callback function is called with an undefined 'callbackObject' and a 'locationHeader' string argument</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>In the harness test code, call dial.getDeviceDescription(), passing in the 'locationHeader' callback argument, a null 'originHeader' an undefined 'callbackObject' and a callback argument</procedure>
+            <expectedBehaviour>The callback function is called with 'callbackObject' equal to undefined, 'applicationUrl' of type string, 'didRedirect' equal to false and 'allowOrigin' equal to null</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>In the harness test code, call dial.startHbbTVApp() with 'applicationUrl' set to the value of the 'applicationUrl' string with '/HbbTV' appended to it, 'pathToAitXml' set to the relative path of the AIT XML of the HbbTV app to launch on the terminal, 'origin' set to null, and a callback function</procedure>
+        </testStep>
+        <testStep>
+            <procedure>The callback function is called with an undefined 'callbackObject', a 'returnCode' of 201, a 'contentType' of 'text/html; charset=UTF-8', a 'body' of type string and a null 'allowOrigin'</procedure>
+            <expectedBehaviour>The app launches on the HbbTV terminal</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>In the harness test code, call dial.getHbbtvAppDescription() with the 'applicationUrl' set to the 'applicationUrl' used in the call to startHbbtvApp, 'schemaValidation' set to false, 'origin' set to null, and a callback function</procedure>
+            <expectedBehaviour>The harness attempts to retrieve the DIAL HbbTV Application description from the HbbTV terminal</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>The callback function is called with an undefined 'callbackObject', with 'app2appUrl', 'interdevSyncUrl' and 'userAgent' arguments of type string, and 'allowOrigin' equal to null</procedure>
+            <expectedBehaviour>The harness test code retrieves the 'app2appUrl' from the DIAL HbbTV Application description</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>The harness test code attempts to open a connection to the remote App2App endpoint by calling testAPI.openWebSocket(), passing in a 'url' parameter (composed of the result of the 'app2appUrl' remote base URL, and the app endpoint 'myapp.mychannel.org/org.hbbtv_APP2APP0386', separated by a '/' character if one is not already present), callbacks for 'onConnect', 'onMessage', 'onPong', 'onClose', 'onFail', an undefined 'callbackObject', a null 'originHeader' and a null 'websocketExtensionHeader'. Note that the 'onFail' callback must fail the test if it is ever called.</procedure>
+        </testStep>
+        <testStep>
+            <procedure>The 'onConnect' callback for the remote Websocket is called</procedure>
+            <expectedBehaviour>The harness test code has connected to the HbbTV terminal's App2App endpoint</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>In the app running on the terminal, obtain a reference to the HbbTVCSManager embedded object</procedure>
+            <expectedBehaviour>A reference to the HbbTVCSManager embedded object is obtained</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>In the app running on the terminal, call getApp2AppLocalBaseURL() on the HbbTVCSManager</procedure>
+            <expectedBehaviour>The base URL of the application to application communication service local endpoint is returned</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>The app running on the terminal attempts to open a Websocket connection to the local App2App endpoint by creating a new W3C Websocket object using 'new WebSocket(url)', where the 'url' parameter is composed of the App2App local base URL and the app endpoint 'myapp.mychannel.org/org.hbbtv_APP2APP0386' (separated by a '/' character if one is not already present)</procedure>
+            <expectedBehaviour>An 'onopen' event is dispatched, indicating that the connection was successful</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>In the app running on the terminal, wait for a message to be received on the remote Websocket</procedure>
+            <expectedBehaviour>The 'onmessage' callback is called on the W3C Websocket object, with the 'data' context containing the string 'pairingcompleted'</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>In the harness test code, wait for the WebsocketClient's 'onMessage' callback to be called with a 'data' argument containing the string 'pairingcompleted'</procedure>
+            <expectedBehaviour>The 'data' argument contains the string 'pairingcompleted'</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>In the app running on the harness, call analyzeScreenExtended(), instructing the tester to wait until the terminal test code app indicates that its Websocket connection has been successfully paired. This is indicated by the 'Websocket Paired' indicator being displayed as green.</procedure>
+            <expectedBehaviour>The 'Websocket Paired' indicator on the terminal is green, indicating that the Websocket is paired</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>In the app running on the terminal, obtain a reference to the embedded video/broadcast object</procedure>
+            <expectedBehaviour>A reference to the video/broadcast object is obtained</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>In the app running on the terminal, call selectServiceByRemoteControl(), passing in the 'ATE Test 12' and a callback function</procedure>
+            <expectedBehaviour>The callback function is called</expectedBehaviour>
+        </testStep>
+        <testStep>
+            <procedure>In the harness test code, check that the 'onClose' callback is called</procedure>
+            <expectedBehaviour>The harness test code Websocket connection closes in response to the service change on the HbbTV terminal</expectedBehaviour>
+        </testStep>
+    </testProcedure>
+    <passCriteria>
+        When an application with a paired connection to the app2end end-point was stopped due to a channel change, the terminal closed the Websocket connection to the client connected to the remote end-point.
+    </passCriteria>
+    <history>
+        <historyItem name="HbbTV" date="2014-12-11" part="assertion" type="accepted"/>
+        <historyItem name="HbbTV" date="2016-01-18" part="procedure" type="submitted"/>
+        <historyItem name="HbbTV" date="2016-01-18" part="implementation" type="submitted"/>
+    </history>
+</testCase>

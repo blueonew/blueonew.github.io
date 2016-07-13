@@ -1,0 +1,403 @@
+﻿@CHARSET "UTF-8";
+
+.window {
+	position: absolute;
+	top: 90px;
+	left: 0px;
+}
+
+.elem {
+	position: absolute;
+	z-index: 3;
+	transform:none;
+}
+
+.elem_border {
+	position: absolute;
+	z-index: 100;
+	transform:none;
+}
+
+.elem_border_transparent {
+	position: absolute;
+	z-index: 99;
+	transform:none;
+}
+
+.elem  span {
+	position: absolute;
+	bottom: 16px;
+	left: 0px;
+    margin:0px 15px;
+	overflow: hidden;
+	font-size: 36px;
+	font-family: 'Helvetica World';
+	color: #e0e0e0;
+	white-space: nowrap;
+	text-overflow: clip;
+	text-align: center;
+}
+
+#span_scaleplate {
+	position: absolute;
+	top:0px;
+	left:0px;
+	width:auto;
+	font-size: 36px;
+	font-family: 'Helvetica World';
+	white-space: nowrap;
+	text-align: center;
+	z-index:0;
+}
+
+.elem img {
+	position: absolute;
+}
+
+.topShow {
+	z-index: 4;
+}
+
+.bottomShow {
+	z-index: 3;
+}
+/*
+.elem_app_one img
+{position:absolute;top:90px;left:90px;width:101px;height:101px;}
+*/
+.center {
+	position: absolute;
+	width: 106;
+	margin: auto;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+/*tv里被标题的背景 */
+.tvMarked {
+	position: absolute;
+	width: 90px;
+	height: 90px;
+	top: 0px;
+	right: 0px;
+	/*font-size:40px;
+	font-weight:bold;
+	color:#eff4fa;*/
+	background: url(http://s3.tcllauncher.com/html5/images/sourceMarked.png?md5=cbb62d1630e3270cb4697f2dc482df46);
+}
+
+.MarkedText {
+	position: absolute;
+	width: 90px;
+	height: 90px;
+	top: 0px;
+	right: 0px;
+	font-size: 26px;
+	font-family: 'Helvetica World';
+	color: #f00;
+	white-space: nowrap;
+	/*line-height:90px;
+	text-overflow:ellipsis;*/
+	text-align: center;
+	-ms-transform: rotate(45deg); /* IE 9 */
+	-moz-transform: rotate(45deg); /* Firefox */
+	-webkit-transform: rotate(45deg); /* Safari 和 Chrome */
+	-o-transform: rotate(45deg); /* Op*/
+	transform: ratate(45deg);
+}
+/*tv里被标题的背景 */
+.tvMarkedBg {
+	position: absolute;
+	width: 0;
+	height: 0;
+	top: 0px;
+	right: 0px;
+	border-top: 90px solid #24292e;
+	border-left: 90px solid transparent;
+}
+
+.borderShadow {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	-moz-box-shadow: outset 0 0px 12px red;
+	-webkit-box-shadow: outset 0 0px 12px red;
+	box-shadow: outset 0 0px 12px red;
+}
+
+.picShadowBg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	/*-webkit-border-radius: 10px;-moz-border-radius: 10px; border-radius: 10px;*/
+	left: 0px;
+	bottom: 0px;
+	-moz-box-shadow: inset 0 -200px 100px -150px black;
+	-webkit-box-shadow: inset 0 -200px 100px -150px black;
+	box-shadow: inset 0 -200px 100px -150px black;
+	/* For IE 8 */
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#000')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0,
+		Color='#000');
+}
+
+.myIframe {
+	position: absolute;
+	overflow: hidden;
+	top: 0px;
+	left: 0px;
+	height: 1080px;
+	width: 1920px;
+    display: none; 
+	/* visibility: hidden; */
+}
+.myIframe.active{
+	 display: block; 
+	/* visibility: visible; */
+}
+
+#iframeDiv {
+	position: absolute;
+	/*top:180px;*/
+	top: 0px;
+	left: 0px;
+	/*width:5760px;增加了一个页面的宽度*/
+	width: 1920px;
+	height: 1080px;
+	/*z-index:3;*/
+	overflow: hidden;
+	/*-webkit-transition-duration:400ms;*/
+}
+
+.mainFrameBG {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 1920px;
+	height: 1080px;
+	z-index: 0;
+}
+
+.bgStyle {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 1920px;
+	height: 1080px;
+	z-index: 1;
+}
+
+#infoStatus {
+	position: absolute;
+	right: 95px;
+	top: 43px;
+	width: 550px;
+	height: 50px;
+	z-index: 5;
+}
+
+#usb {
+	position: absolute;
+	right: 450px;
+    top:4px;
+}
+
+#network {
+	position: absolute;
+	right: 380px;
+	top: 4px;
+}
+
+#date {
+	position: absolute;
+	right: 150px;
+	top: 0px;
+	font-size: 40px;
+	font-family: 'Helvetica World';
+	color: #fff;
+}
+
+#time {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	font-size: 40px;
+	font-family: 'Helvetica World';
+	color: #fff;
+}
+
+#infoStatusSetting {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 1920px;
+	height: 156px;
+	/*background-image: url(http://s3.tcllauncher.com/html5/images/statusBarBg.png?md5=d9802f46e688e6330ff9b97e96a45323) no-repeat;*/
+    background:#3E3D3E;
+	z-index: 6;
+}
+
+#usb_Setting {
+	right: 740px;
+}
+
+#spreadOne {
+	position: absolute;
+	top: 38px;
+	display: inline;
+	width: 2px;
+	height: 59px;
+	right: 738px;
+	background: url(http://s3.tcllauncher.com/html5/images/spreat.png?md5=e052cd738d9b95c8a3042cb9b65fdd2c) no-repeat;
+}
+
+#settings_Setting {
+	right: 393px;
+}
+
+#spreadTwo {
+	position: absolute;
+	top: 38px;
+	display: inline;
+	width: 2px;
+	height: 59px;
+	right: 391px;
+	background: url(http://s3.tcllauncher.com/html5/images/spreat.png?md5=e052cd738d9b95c8a3042cb9b65fdd2c) no-repeat;
+}
+
+#TCL-WIFI_Setting {
+	right: 46px;
+}
+
+.topButton_Setting {
+	position: absolute;
+    display: inline;
+	top: 18px;
+	width: 332px;
+	height: 112px;
+    padding-right:21px;
+	color: #AAA;
+	text-align: center;
+	line-height: 124px;
+	font-family: 'Helvetica World';
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+
+.topButton_Setting img
+{
+    padding:0px 21px;
+}
+
+
+.topTitleText {
+    font-size: 36px;
+    position: relative;
+    bottom: 6px;
+    padding-right: 21px;
+    max-width:210px;
+}
+
+#title {
+    position: absolute;
+    top: 888px;
+    left: 13px; /*这是第一个tab标题的左边距*/
+    height: 90px;
+    width: 1907px;
+    /*z-index: 5;
+    overflow:hidden;*/
+}
+
+.titleSpan {
+    position: relative;
+    top: 15px;
+    margin-left: 120px;
+    font-size: 40px;
+    font-family: 'Helvetica World';
+    color: #9A9999;
+    text-align: center;
+    border: none;
+    z-index: 5;
+}
+
+#mainTitle {
+    position: absolute;
+    left: 0px;
+    top: 2px;
+    width: 100%;
+    font-size: 48px;
+    font-family: 'Helvetica World';
+    color: #FFF;
+    text-align: center;
+    white-space:nowrap;
+    z-index: 5;
+} 
+
+#mainFocus {
+    position: absolute;
+    top: -14px;
+    left: 120px;
+    /*width: 222px; 宽度和高度都根据集焦的那个光束切图的宽度和高度来定*/
+    /*height: 104px; 宽度和高度都根据集焦的那个光束切图的宽度和高度来定*/
+    text-align: center;
+    line-height: 104px;
+    min-width:222px;
+    z-index: 4;
+    font-size: 48px;
+    font-family: 'Helvetica World';
+    color: #FFF;
+    white-space:nowrap;
+}
+
+
+#opacityBg {
+	display: none;
+	position: absolute;
+	top: 156px;
+	left: 0px;
+	width: 1920px;
+	height: 924px;
+	background-color: #000;
+	z-index: 6;
+	opacity: .40;
+}
+
+/*history的样式文件*/
+.history_border {
+	position: absolute;
+	top: -4px;
+	left: -4px;
+}
+
+.historyDelUncheckedbtn {
+	display: inline;
+	background-image: url(http://s3.tcllauncher.com/html5/images/unCheckedButton.png?md5=01a81ce104f0ceeba71f744e300a8fe9);
+	font-family: 'Helvetica World';
+	font-size: 5px;
+	/* padding: 5px 20px 10px 20px;*/
+	text-decoration: none;
+	color: #172E06;
+}
+
+
+#keepFocus {
+	position: absolute;
+	height: 1080px;
+	width: 1920px;
+	z-index: 4;
+}
+.blockResImg{
+	position: absolute;
+	right: 0px;
+	top:0px;
+	z-index:10;
+}
+

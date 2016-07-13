@@ -1,0 +1,154 @@
+﻿#researchResult
+{
+	position:absolute;
+	top:75px;
+	left:116px;
+	color:white;
+	font-size:60px;
+	font-family:Arial;
+	width:1500px;
+}
+ 
+#pageNumber
+{
+    position:absolute;
+	top:95px;
+	left:1700px;
+	color:white;
+	font-size:36px;
+	font-family:Arial;
+    color:#9a9999;
+}
+
+#whiteLine
+{
+    position:absolute;
+	top:157px;
+	left:95px;
+	width:1680px;
+	height:2px;
+	background-image:url('http://s3.tcllauncher.com/html5/images/topline.png?md5=03cad43519d308e9be8607c406dbb0b1 '); 
+}
+
+#contentDiv
+{
+	position:absolute;
+	height:820px;
+	top:20px;
+	width:1882px ;
+	border:none;
+	padding:0;
+}
+
+.page
+{
+	position:absolute;
+	height:820px;
+	width:1882px ;
+	border:none;
+	padding:0;
+	display: none;
+}
+
+#contentArea
+{
+	position:absolute;
+	height:820px;
+	width:1882px ;
+	overflow:hidden;
+	top:230px;
+	border:none;
+	padding:0;
+}
+
+
+ 
+.videoTitle
+{
+    width:310px;
+    left:0px;
+    padding:5px 10px;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    height:30px;
+    color:white;
+    position:absolute;
+    font-size:30px;
+    top:290px;
+    background:#000;
+}
+
+#pageBarBackground
+{ 
+    position:absolute;
+	background-image:url('http://s3.tcllauncher.com/html5/images/rollbackgroudn.png?md5=6d23f430be8a28008ea7b9cd40037ee9');
+	left:1850px;
+	top:281px;
+	height:670px;
+	width:12px;
+	padding:0;
+	margin:0;
+  
+ }
+ 
+#pageBar
+{ 
+	position:absolute;
+	background-image:url('http://s3.tcllauncher.com/html5/images/roll.png?md5=3608e2d776dcbd86684a33bb5d0f0ba7');
+	left:1850px;
+	top:281px;
+	height:174px;
+	width:12px;
+  
+}
+#loadingPic
+{
+	position:absolute;
+	left:334px; 
+	top:140px; 
+	width:130px; 
+	height:130px;
+}
+
+.poster
+{
+	position:absolute;
+	padding-top:0px;
+	background-repeat:no-repeat;
+	background-position:0px 0px;
+	background-size:330px 330px;
+	border:none;
+	height:330px;
+	width:330px;
+	color:#F00;
+	text-align:center;
+	outline:none;
+}
+
+.defaultPoster
+{
+	position:absolute;
+	padding-top:0px;
+	background-repeat:no-repeat;
+	background-position:0px 0px;
+	border:none;
+	height:330px;
+	width:330px;
+	color:#F00;
+	text-align:center;
+	outline:none;
+	background-size:640px 480px;
+	background-position:-150px -50px;
+}
+
+.row
+{
+	position:relative;
+	height:350px;
+	width:1750px;
+	left:95px;
+	margin:0px;
+	margin-top:0px;
+	top:20px;
+}
